@@ -16,6 +16,11 @@ import vo.PmemberVO;
 @Repository
 public class PmemberDAO {
 	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	private static final String NS = "one.mapper.pmembermapper.";
+	
 	// ** selectList
 		public List<PmemberVO> selectList() {
 			return sqlSession.selectList(NS+"selectList");
