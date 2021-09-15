@@ -34,7 +34,7 @@ $(function() {
 </script>
 </head>
 <body>
-<h2>** Review Cri_PageList **</h2>
+<h2 align="center">** Review Cri_PageList **</h2>
 <br>
 <c:if test="${message!=null}">
  => ${message}<br> 
@@ -81,7 +81,7 @@ $(function() {
 	<td>${list.id}</td><td>${list.brdate}</td><td align="center">${list.brcnt}</td>
 </tr></c:forEach>
 </table>
-<br>
+<br><hr>
 <div align="center">
 	<!-- Paging 2 : Criteria 적용 
 		=> ver01 : pageMaker.makeQuery(?)
@@ -111,12 +111,13 @@ $(function() {
 </div>
 
 <br><hr>
+<div align="center">
 <c:if test="${loginID!=null}"> 	
 	<a href="rinsertf">새글등록</a>&nbsp;&nbsp;
 </c:if>  
 <c:if test="${loginID==null}"> 
 	<a href="loginf">로그인</a>&nbsp;&nbsp;
-	<a href="joinf">회원가입</a>&nbsp;&nbsp;
-</c:if>
+	<a href="joinf">회원가입</a>&nbsp;&nbsp;	
+</c:if></div>
 </body>
 </html>

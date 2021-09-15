@@ -17,16 +17,14 @@
      <td bgcolor="SkyBlue">도시</td>
 	 <td>${Apple.brcity}</td> 
 	 <td bgcolor="SkyBlue">조회수</td>
-	 <td>${Apple.brno}</td>
+	 <td>${Apple.brcnt}</td>
 </tr>
 <tr height="40">
 	 <td>${Apple.brtitle}</td>
 </tr>
 <tr height="40">
-	 <td><textarea rows="50" cols="3000" readonly>${Apple.brcontent}</textarea></td>
-</tr>
-<tr>
      <td>${Apple.brfile}</td>
+	 <td><textarea rows="50" cols="3000" readonly>${Apple.brcontent}</textarea></td>
 </tr>
 <tr height="40">
      <td bgcolor="SkyBlue">만족도</td>

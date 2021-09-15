@@ -8,6 +8,9 @@ import vo.NoticeVO;
 
 public interface NoticeService {
 	
+	// ** Ajax titleRDetail
+	public List<NoticeVO> titleNDetail(NoticeVO vo);
+		
 	// PageList2. => ver02 : SearchPageList
 	public int searchRowsCount(SearchCriteria cri);
 	public List<NoticeVO> searchList(SearchCriteria cri);

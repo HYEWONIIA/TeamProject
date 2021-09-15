@@ -49,7 +49,7 @@ $(function() {
 	<input type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword}">
 	<button id="searchBtn">Search</button>
 </div>
-<br><hr>
+<br>
 <table>
 <tr height="40" bgcolor="PaleTurquoise">
 	<th>번호</th><th>제목</th><th>작성자</th><th>작성일</th>

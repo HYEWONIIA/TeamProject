@@ -39,7 +39,7 @@ public class QnaController {
 	} //arlist	
 	
 	// ** Ajax QnaList 
-	@RequestMapping(value = "/qcplist")
+	@RequestMapping(value = "/aqcplist")
 	public ModelAndView qcplist(ModelAndView mv) {
 		List<QnaVO> list = service.selectList();
 		if (list != null) {
@@ -102,14 +102,17 @@ public class QnaController {
 
 		String password = vo.getBqpw(); //User가 입력한값
 		vo = service.selectOne(vo);
-		if (vo.getBqpw().equals(password)) {
-			mv.setViewName("redirect:qdetail");
-		}else {
-			mv.setViewName("qna/qnaPwForm");
-		 }
+		if (vo!=null) {
+		    if (vo.getBqpw().equals(password)) {
+			    mv.setViewName("redirect:qdetail");
+		    }else {
+			    mv.setViewName("qna/qnaPwForm");
+		    } 
+	    }else {
+			mv.setViewName("pmember/loginForm");
+	    }
 		return mv;
 	} //qnapw
-	
 	// ** 리뷰는 로그인 되어있을때만
 	@RequestMapping(value = "/qdetail")
 	public ModelAndView qdetail(HttpServletRequest request, ModelAndView mv, 

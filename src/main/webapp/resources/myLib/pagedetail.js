@@ -18,6 +18,23 @@ function titleRDetail(brno) {
 	}); //ajax
 } //titleRDetail
 
+// Notice title Detail
+function titleNDetail(bfno) {
+	$.ajax({
+		type: 'Get',
+		url:'andetail?bfno='+bfno,
+		data:{
+			bfno:bfno
+		},		
+		success:function(resultPage){
+			$('#resultArea1').html(resultPage);
+		},
+		error:function(){
+			alert('~~ 서버 오류 !!! 잠시후 다시 하세요 ~~  ');
+		}
+	}); //ajax
+} //titleNDetail
+
 // Qna title Detail
 function titleQDetail(bqno) {
 	$.ajax({
@@ -33,4 +50,4 @@ function titleQDetail(bqno) {
 			alert('~~ 서버 오류 !!! 잠시후 다시 하세요 ~~  ');
 		}
 	}); //ajax
-} //titleRDetail
+} //titleQDetail

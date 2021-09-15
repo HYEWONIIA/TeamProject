@@ -49,7 +49,7 @@ $(function() {
 	<input type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword}">
 	<button id="searchBtn">Search</button>
 </div>
-<br><hr>
+<br>
 <table class="noticeTable">
 <tr height="40" bgcolor="PaleTurquoise">
 	<th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th>
@@ -59,7 +59,7 @@ $(function() {
 	<td>
 		<!-- 로그인 했을때만 글내용을 볼 수 있도록 -->
 		<c:if test="${loginID!=null}">
-			<a href="ndetail?bfno=${list.bfno}&id=${list.id}">${list.bftitle}</a>
+			<a href="#resultArea1" onclick="titleNDetail(${list.bfno})">${list.bftitle}</a>
 		</c:if>
 		<c:if test="${loginID==null}">
 			${list.bftitle}

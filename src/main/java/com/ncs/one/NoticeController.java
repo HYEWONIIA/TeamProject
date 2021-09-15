@@ -16,6 +16,7 @@ import criTest.SearchCriteria;
 import lombok.extern.log4j.Log4j;
 import service.NoticeService;
 import vo.NoticeVO;
+import vo.ReviewVO;
 
 @Log4j
 @Controller
@@ -24,16 +25,29 @@ public class NoticeController {
 	@Autowired
 	NoticeService service;
 
+	// ** Ajax review Title - detail
+	@RequestMapping(value = "/andetail")
+	public ModelAndView andetail(ModelAndView mv, NoticeVO vo) {
+		List<NoticeVO> list = service.titleNDetail(vo);
+		if (list != null) {
+			mv.addObject("Banana", list);
+		}else {
+			mv.addObject("message", "~~ 출력할 자료가 1건도 없습니다. ~~");
+		}
+		mv.setViewName("notice/noticeDetail");
+		return mv;
+	} //aNDetail
+	
 	// ** Ajax NoticeList 
-	@RequestMapping(value = "/anlist")
-	public ModelAndView anlist(ModelAndView mv) {
+	@RequestMapping(value = "/ancplist")
+	public ModelAndView ancplist(ModelAndView mv) {
 		List<NoticeVO> list = service.selectList();
 		if (list != null) {
 			mv.addObject("Banana", list);
 		}else {
 			mv.addObject("message", "~~ 출력할 자료가 1건도 없습니다. ~~");
 		}
-		mv.setViewName("notice/noticeList");
+		mv.setViewName("notice/nCriList");
 		return mv;
 	} //anlist
 		

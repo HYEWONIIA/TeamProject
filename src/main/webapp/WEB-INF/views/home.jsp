@@ -11,7 +11,7 @@
 	<a href="clogout">로그아웃</a>&nbsp;&nbsp;
 	<a href="cdelete">회원탈퇴</a>&nbsp;&nbsp;
 	<a href="aboard">Board</a>&nbsp;&nbsp;
-	<a href="qcplist">list</a>&nbsp;&nbsp;
+	<a href="qinsertf">list</a>&nbsp;&nbsp;
 <hr>
 
 </body>

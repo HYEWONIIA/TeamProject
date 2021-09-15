@@ -38,7 +38,7 @@ public class ReviewController {
 	} //arlist
 	
 	// ** Ajax BoardList 
-	@RequestMapping(value = "/rcplist")
+	@RequestMapping(value = "/arcplist")
 	public ModelAndView rcplist(ModelAndView mv) {
 		List<ReviewVO> list = service.selectList();
 		if (list != null) {

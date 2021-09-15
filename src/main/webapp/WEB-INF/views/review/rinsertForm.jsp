@@ -7,17 +7,19 @@
 <meta charset="UTF-8">
 <title>** Review Insert **</title>
 <link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
+<link rel="stylesheet" type="text/css" href="resources/myLib/star.css" >
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
+<script src="resources/myLib/star.js"></script>
 </head>
 <body>
 <h2 class="n">홈페이지 이름</h2>
-<table class="reviewTable"><form action="rinsert" method="get">
+<table class="reviewTable" text><form action="rinsert" method="get">
 	<tr height="40">
-	    <td bgcolor="Silver">Id</td>
+	    <td bgcolor="Silver" align="center">Id</td>
 		<td><input type="text" name="id" value="${loginID}" readonly></td>
 	</tr>
 	<tr height="40">	
-		<td bgcolor="Silver">City</td>
+		<td bgcolor="Silver" align="center">City</td>
 		<td><select name="city" id="city">
 		  <option value="Geoje">거제</option>
 		  <option value="Gyeongju">경주</option>
@@ -69,16 +71,16 @@
 		 </select></td>
 	</tr>
 	<tr height="40">
-	     <td bgcolor="Silver">Title</td>
+	     <td bgcolor="Silver" align="center">Title</td>
 		 <td><input type="text" name="title"></td>
 	</tr>	
 	<tr height="40">
-	     <td bgcolor="Silver" >Content</td>
-		 <td><textarea name="content" rows="50" cols="3000"></textarea></td>
+	     <td bgcolor="Silver" align="center" width="100">Content</td>
+		 <td><textarea name="content" rows="30" cols="60"></textarea></td>
 	</tr>
            
 	<tr> 
-	     <td bgcolor="Silver">첨부파일</td>
+	     <td bgcolor="Silver" align="center">첨부파일</td>
 	     <td>
   	     <img src="" class="select_img"><br>
   	     <input type="file" name="uploadfilef" id="uploadfilef">
@@ -95,19 +97,13 @@
 			}); // change	
   		</script></td>
 	</tr>
-	<tr> 
-	     <td bgcolor="Silver">만족도</td>
-		 <td><select name="satis" id="satis">
-		  <option value="1">1점</option>
-		  <option value="2">2점</option>
-		  <option value="3">3점</option>
-		  <option value="4">4점</option>
-		  <option value="5">5점</option>
-		 </select></td>
+	<tr>
+	<td></td>
+	   <td width="500"> <%@  include file="star.html" %> </td>
 	</tr>
 	
 	<tr height="40"><td></td>
-		<td><input type="submit" value="전송">&nbsp;&nbsp;
+		<td align="center"><input type="submit" value="전송">&nbsp;&nbsp;
 			<input type="reset" value="취소">
 		</td>
 	</tr>
@@ -118,7 +114,9 @@
 => ${message}
 </c:if>
 <br><hr>
+<div align="center">
 <a href="rlist">후기창</a>&nbsp;
 <a href="home">HOME</a>
+</div>
 </body>
 </html>

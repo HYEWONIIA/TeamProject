@@ -26,6 +26,7 @@ function inCheck() {
 		$('#pMessage').html(' Password 를 입력하세요 ~~');
 	}
 } //inCheck
+</script>
 </head>
 <body>
 <h2 class="n">홈페이지 이름</h2>
