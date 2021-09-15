@@ -8,6 +8,8 @@
 <title>** Spring Mybatis Review Cri_PageList **</title>
 <link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css" >
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
+<script src="resources/myLib/pagelist.js"></script>
+<script src="resources/myLib/pagedetail.js"></script>
 <script>
 //** Button 으로 현재 입력 & 선택한 keyword 와 searchType 을 queryString 으로 
 //   요청을 보내기 때문에 makeQuery() 메서드를 사용해야 함.
@@ -66,7 +68,7 @@ $(function() {
 	
 		<!-- 로그인 했을때만 글내용을 볼 수 있도록 -->
 		<c:if test="${loginID!=null}">
-			<a href="qdetail?bqno=${list.bqno}&id=${list.id}">${list.bqtitle}</a>
+			<a href="#resultArea1" onclick="titleQDetail(${list.bqno})">${list.bqtitle}</a>
 		</c:if>
 		<c:if test="${loginID==null}">
 			${list.bqtitle}

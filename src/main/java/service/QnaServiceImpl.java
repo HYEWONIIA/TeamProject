@@ -15,6 +15,12 @@ public class QnaServiceImpl implements QnaService{
 	@Autowired
 	QnaDAO dao;
 	
+	// ** Ajax titleQDetail
+	@Override
+	public List<QnaVO> titleQDetail(QnaVO vo) {
+		return dao.titleQDetail(vo);
+	}
+	
 	// PageList2. => ver02 : SearchPageList
 	@Override
 	public int searchRowsCount(SearchCriteria cri) {

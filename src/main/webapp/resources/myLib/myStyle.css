@@ -1,22 +1,4 @@
-.n {
-	align-content: center;
-	align-items: center;
-	align-self: center;
-}
-.reviewTable{
-	align-content: center;
-	align-items: center;
-	align-self: center;
-}
-
-.noticeTable {
-	align-content: center;
-	align-items: center;
-	align-self: center;
-}
-
-.textLink {
-	color: 'Blue';
-	
-}
+a {color:gray; text-decoration:none; font-weight:bold;}	
+a:hover { color:DimGray; font-size: 1.2em; } 
+a:active { color:SeaGreen; } 
           

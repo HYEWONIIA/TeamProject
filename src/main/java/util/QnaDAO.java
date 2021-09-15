@@ -18,6 +18,11 @@ public class QnaDAO {
 	SqlSession sqlSession;
 	private static final String NS="one.mapper.QnaMapper.";
 
+	// ** Ajax titleQnaList
+	public List<QnaVO> titleQDetail(QnaVO vo) {
+		return sqlSession.selectList(NS+"titleQDetail",vo);
+	}
+	
 	// PageList2. => ver02 : SearchPageList---------------
 	// => mapper 에 searchRowsCount, searchList 추가
 	public int searchRowsCount(SearchCriteria cri) {

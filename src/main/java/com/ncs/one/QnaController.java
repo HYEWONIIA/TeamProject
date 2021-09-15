@@ -16,6 +16,7 @@ import criTest.SearchCriteria;
 import lombok.extern.log4j.Log4j;
 import service.QnaService;
 import vo.QnaVO;
+import vo.ReviewVO;
 
 @Log4j
 @Controller
@@ -24,9 +25,22 @@ public class QnaController {
 	@Autowired
 	QnaService service;
 	
+	// ** Ajax QnA Title - detail
+	@RequestMapping(value = "/aqdetail")
+	public ModelAndView aqdetail(ModelAndView mv, QnaVO vo) {
+		List<QnaVO> list = service.titleQDetail(vo);
+		if (list != null) {
+			mv.addObject("Banana", list);
+		}else {
+			mv.addObject("message", "~~ 출력할 자료가 1건도 없습니다. ~~");
+		}
+		mv.setViewName("qna/qnaDetail");
+		return mv;
+	} //arlist	
+	
 	// ** Ajax QnaList 
-	@RequestMapping(value = "/aqlist")
-	public ModelAndView aqlist(ModelAndView mv) {
+	@RequestMapping(value = "/qcplist")
+	public ModelAndView qcplist(ModelAndView mv) {
 		List<QnaVO> list = service.selectList();
 		if (list != null) {
 			mv.addObject("Banana", list);
@@ -87,11 +101,11 @@ public class QnaController {
 	public ModelAndView qnapw(HttpServletRequest request, ModelAndView mv, QnaVO vo) {
 
 		String password = vo.getBqpw(); //User가 입력한값
-		
+		vo = service.selectOne(vo);
 		if (vo.getBqpw().equals(password)) {
 			mv.setViewName("redirect:qdetail");
 		}else {
-			mv.setViewName("qna/qnapwf");
+			mv.setViewName("qna/qnaPwForm");
 		 }
 		return mv;
 	} //qnapw

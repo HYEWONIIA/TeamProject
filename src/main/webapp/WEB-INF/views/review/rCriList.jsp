@@ -8,6 +8,8 @@
 <title>** Spring Mybatis Review Cri_PageList **</title>
 <link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css" >
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
+<script src="resources/myLib/pagelist.js"></script>
+<script src="resources/myLib/pagedetail.js"></script>
 <script>
 //** Button 으로 현재 입력 & 선택한 keyword 와 searchType 을 queryString 으로 
 //   요청을 보내기 때문에 makeQuery() 메서드를 사용해야 함.
@@ -50,7 +52,7 @@ $(function() {
 	<input type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword}">
 	<button id="searchBtn">Search</button>
 </div>
-<br><hr>
+<br>
 <table>
 <tr height="40" bgcolor="PaleTurquoise">
 	<th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th>
@@ -70,7 +72,7 @@ $(function() {
 	
 		<!-- 로그인 했을때만 글내용을 볼 수 있도록 -->
 		<c:if test="${loginID!=null}">
-			<a href="#resultArea1" onclick="titleRDetail('${list.brno}')">${list.brtitle}</a>
+			<a href="#resultArea1" onclick="titleRDetail(${list.brno})">${list.brtitle}</a>
 		</c:if>
 		<c:if test="${loginID==null}">
 			${list.brtitle}
@@ -79,7 +81,7 @@ $(function() {
 	<td>${list.id}</td><td>${list.brdate}</td><td align="center">${list.brcnt}</td>
 </tr></c:forEach>
 </table>
-<br><hr>
+<br>
 <div align="center">
 	<!-- Paging 2 : Criteria 적용 
 		=> ver01 : pageMaker.makeQuery(?)
@@ -111,12 +113,10 @@ $(function() {
 <br><hr>
 <c:if test="${loginID!=null}"> 	
 	<a href="rinsertf">새글등록</a>&nbsp;&nbsp;
-	<a href="logout">Logout</a>&nbsp;&nbsp;
 </c:if>  
 <c:if test="${loginID==null}"> 
 	<a href="loginf">로그인</a>&nbsp;&nbsp;
 	<a href="joinf">회원가입</a>&nbsp;&nbsp;
 </c:if>
-<a href="home">HOME</a>
 </body>
 </html>

@@ -8,6 +8,9 @@ import vo.QnaVO;
 
 public interface QnaService {
 	
+	// ** Ajax titleRDetail
+	public List<QnaVO> titleQDetail(QnaVO vo);
+	
 	// PageList2. => ver02 : SearchPageList
 	public int searchRowsCount(SearchCriteria cri);
 	public List<QnaVO> searchList(SearchCriteria cri);

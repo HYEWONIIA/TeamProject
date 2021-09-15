@@ -24,9 +24,9 @@ public class ReviewController {
 	@Autowired
 	ReviewService service;
 	
-	// ** Ajax Board - review
+	// ** Ajax review Title - detail
 	@RequestMapping(value = "/ardetail")
-	public ModelAndView review(ModelAndView mv, ReviewVO vo) {
+	public ModelAndView ardetail(ModelAndView mv, ReviewVO vo) {
 		List<ReviewVO> list = service.titleRDetail(vo);
 		if (list != null) {
 			mv.addObject("Banana", list);
@@ -34,6 +34,19 @@ public class ReviewController {
 			mv.addObject("message", "~~ 출력할 자료가 1건도 없습니다. ~~");
 		}
 		mv.setViewName("review/reviewDetail");
+		return mv;
+	} //arlist
+	
+	// ** Ajax BoardList 
+	@RequestMapping(value = "/rcplist")
+	public ModelAndView rcplist(ModelAndView mv) {
+		List<ReviewVO> list = service.selectList();
+		if (list != null) {
+			mv.addObject("Banana", list);
+		}else {
+			mv.addObject("message", "~~ 출력할 자료가 1건도 없습니다. ~~");
+		}
+		mv.setViewName("review/rCriList");
 		return mv;
 	} //arlist
 	

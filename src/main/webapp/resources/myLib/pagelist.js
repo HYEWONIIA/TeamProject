@@ -58,22 +58,3 @@ $(function() {
 	}); //ajax
   }); //qcplist_click
 }); //ready
-
-
-// => title 누르면 review Detail 조회
-// test 1) JS function
-function aidBList(title) {
-	$.ajax({
-		type: 'Get',
-		url: 'ardetail',
-		data:{
-			title:title
-		},
-		success:function(resultPage){
-			$('#resultArea2').html(resultPage);
-		},
-		error:function(){
-			alert('~~ 서버 오류 !!! 잠시후 다시 하세요 ~~');
-		}	
-	}); //ajax
-} //aidBList
