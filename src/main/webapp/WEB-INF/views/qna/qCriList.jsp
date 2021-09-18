@@ -107,11 +107,11 @@ $(function() {
 </div>
 
 <br><hr>
-<c:if test="${loginID!=null}"> 	
-	<a href="rinsertf">새글등록</a>&nbsp;&nbsp;
+<c:if test="${loginID!=null && loginCno!=null}"> 	
+	<a href="qinsertf">새글등록</a>&nbsp;&nbsp;
 	<a href="logout">Logout</a>&nbsp;&nbsp;
 </c:if>  
-<c:if test="${loginID==null}"> 
+<c:if test="${loginID==null && loginCno==null}"> 
 	<a href="loginf">로그인</a>&nbsp;&nbsp;
 	<a href="joinf">회원가입</a>&nbsp;&nbsp;
 </c:if>

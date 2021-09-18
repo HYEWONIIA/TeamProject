@@ -16,7 +16,6 @@ import criTest.SearchCriteria;
 import lombok.extern.log4j.Log4j;
 import service.QnaService;
 import vo.QnaVO;
-import vo.ReviewVO;
 
 @Log4j
 @Controller
@@ -84,7 +83,7 @@ public class QnaController {
 			mv.setViewName("redirect:qlist"); 
 		}else {
 			mv.addObject("message", "~~ 새글 등록 실패 !! 다시 하세요 ~~");
-			mv.setViewName("review/qinsertForm");
+			mv.setViewName("qna/qinsertForm");
 		}
 		return mv;
 	} //qinsert	

@@ -65,7 +65,7 @@
 		where rnum between #{sno} and #{eno}
 	</select>
 	
-	<select id="reviewList" resultType="vo.QnaVO">
+	<select id="qnaList" resultType="vo.QnaVO">
 		select bqno,bqtitle,id,bqdate,root,step,indent from 
 		(select q.* , ROW_NUMBER() OVER(order by root desc, step asc) rnum from qna q) 
 		where rnum between #{sno} and #{eno}
@@ -87,7 +87,7 @@
 			select nvl(max(bqno),0)+1 from qna
 		</selectKey>
 		insert into qna values ( 
-			#{bqno},#{bqtitle},#{id},#{bqcontent},#{password},SYSDATE,0,
+			#{bqno},#{bqtitle},#{id},#{bqcontent},#{bqpw},SYSDATE,0,
 			#{bqno},0,0)
 	</insert>
 	

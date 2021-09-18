@@ -98,7 +98,7 @@
 ** selectKey Test         
 -->
 	<insert id="insert">
-		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
+		<selectKey keyProperty="brno" resultType="int" order="BEFORE">
 			select nvl(max(brno),0)+1 from review
 		</selectKey>
 		insert into board values ( 

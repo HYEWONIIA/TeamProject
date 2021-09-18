@@ -5,34 +5,35 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import util.PmemberDAO;
-import vo.PmemberVO;
-
+import util.ReservationDAO;
+import vo.ReservationVO;
 
 @Service
-public class PmemberServiceImpl implements PmemberService {
+public class ReservationServiceImpl implements ReservationService {
+	
 	@Autowired
-	PmemberDAO dao ;
+	ReservationDAO dao;
 	
 	@Override
-	public List<PmemberVO> selectList() {
+	public List<ReservationVO> selectList() {
 		return dao.selectList();
 	} //selectList()
 	@Override
-	public PmemberVO selectOne(PmemberVO vo) {
+	public ReservationVO selectOne(ReservationVO vo) {
 		return dao.selectOne(vo);
 	} //selectOne
 	
 	@Override
-	public int insert(PmemberVO vo) {
+	public int insert(ReservationVO vo) {
 		return dao.insert(vo);
-	} //insert
+	}//insert
 	@Override
-	public int update(PmemberVO vo) {
+	public int update(ReservationVO vo) {
 		return dao.update(vo);
 	} //update
 	@Override
-	public int delete(PmemberVO vo) {
+	public int delete(ReservationVO vo) {
 		return dao.delete(vo);
 	} //delete
-} //class
+
+}//class

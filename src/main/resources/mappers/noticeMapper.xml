@@ -51,7 +51,7 @@
 		select count(*) from notice
 	</select>
 	
-	<select id="reviewList" resultType="vo.NoticeVO">
+	<select id="noticeList" resultType="vo.NoticeVO">
 		select bfno,bftitle,id,bfdate,bfcnt from 
 		(select n.* , ROW_NUMBER() OVER(order by bfno desc) rnum from notice n) 
 		where rnum between #{sno} and #{eno}
@@ -69,7 +69,7 @@
 ** selectKey Test         
 -->
 	<insert id="insert">
-		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
+		<selectKey keyProperty="bfno" resultType="int" order="BEFORE">
 			select nvl(max(bfno),0)+1 from notice
 		</selectKey>
 		insert into board values ( 
