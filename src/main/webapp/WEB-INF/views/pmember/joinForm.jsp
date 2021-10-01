@@ -225,7 +225,7 @@ function addHypen(obj) {
     <div class="mb-4">
 		<label class="form-label" for="addr"> 주소 </label>
 		<input class="form-control btn-outline-primary" type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
-		<input class="form-control" name="postcode" id="postcode" type="text" placeholder="우편번호" size="10" value="0">
+		<input class="form-control" name="postcode" id="postcode" type="text" placeholder="우편번호" size="10">
 		<input class="form-control" name="addr" id="addr" type="text" placeholder="주소" size="45">
 		<input class="form-control" name="detailAddr" id="detailAddr" type="text" placeholder="상세주소">
 		<input class="form-control" name="extraAddr" id="extraAddr" type="hidden" placeholder="참고항목">

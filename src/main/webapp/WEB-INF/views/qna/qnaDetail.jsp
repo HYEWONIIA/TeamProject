@@ -239,6 +239,7 @@
         <div class="row">
           <div class="col-xl-8 col-lg-10 mx-auto">           
             <p class="py-3 mb-5 text-muted text-center font-weight-light"> 작성자 <a class="font-weight-bold" href="#">${Apple.id }</a><span class="mx-1">|</span> 제목 <a class="font-weight-bold" href="#">${Apple.bqtitle}</a></p>
+            <hr><br><br>
           </div>
         </div>
         <div class="row">
@@ -254,12 +255,7 @@
              <h6 class="text-uppercase text-muted mb-4">comments</h6>
              <!-- comment-->
                <div class="media-body">
-                 <h5>답글</h5> 
-                 <div class="col-xl-8 col-lg-10 mx-auto" align="left">
-                  <c:if test="${loginID=='admin'}">
-                       <a href="qdelete?bqno=${Apple2.bqno}">글삭제</a>&nbsp;    
-                  </c:if>
-                 </div> 
+                 <h5>답글</h5> <div align="left"><c:if test="${loginID=='admin'}"><a href="qdelete?bqno=${Apple2.bqno}">[글삭제]</a></c:if></div>
                  <p class="text-uppercase text-sm text-muted"><i class="far fa-clock"></i> ${Apple2.bqdate}</p>
                  <p class="text-muted">${Apple2.bqcontent}</p>
                </div>
@@ -269,7 +265,7 @@
                       <a href="qdelete?bqno=${Apple.bqno}">글삭제</a>&nbsp;
                    </c:if>
                    <c:if test="${Apple2==null && loginID=='admin'}"> 
-                      <a href="qreplyf?bqno=${Apple.bqno}&id=${loginID}&root=${Apple.root}&indent=${Apple.indent}&step=${Apple.step}&bqpw=${Apple.bqpw}&bqtitle=${Apple.bqtitle}">답글등록</a>&nbsp;
+                      <a href="qreplyf?bqno=${Apple.bqno}&id=${loginID}&root=${Apple.root}&indent=${Apple.indent}&step=${Apple.step}&bqpw=${Apple.bqpw}&bqcontent=${Apple.bqcontent}">답글등록</a>&nbsp;
                    </c:if> 
                </div>
             </c:if>

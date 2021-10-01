@@ -253,10 +253,6 @@
                       <label class="form-label" for="bqtitle">제목 *</label>
                       <input class="form-control" type="text" name="bqtitle" value="답글입니다." readonly >
                     </div>
-                    <div class="form-group">
-                      <label class="form-label" for="bqtitle">문의내용 *</label>
-                      <input class="form-control" type="text" name="bqdetail" value="${Apple.bqcontent}" readonly >
-                    </div>
                   </div>
                 </div>
                 <div class="form-group">
