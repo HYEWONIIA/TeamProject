@@ -38,9 +38,9 @@ public class QnaController {
 		return mv;
 	} //arlist	
 	
-	// ** Notice CriPageList
-	@RequestMapping(value = "/qcplist")
-	public ModelAndView qcplist(ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
+	// ** Qna List
+	@RequestMapping(value = "/qlist")
+	public ModelAndView qlist(ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
 		cri.setSnoEno();
 		
 		// 2) 서비스 처리
@@ -52,9 +52,9 @@ public class QnaController {
 		
 		System.out.println("*** pageMaker => "+pageMaker);
 		mv.addObject("pageMaker",pageMaker);
-		mv.setViewName("qna/qCriList");
+		mv.setViewName("qna/qnaList");
 		return mv;
-	} //qcplist 
+	} //qlist 
 	
 	// ** 새글등록
 	@RequestMapping(value = "/qinsertf")
@@ -64,7 +64,7 @@ public class QnaController {
 	   } //qinsertf
 	
 	@RequestMapping(value = "/qinsert")
-	public ModelAndView qinsert(ModelAndView mv, QnaVO vo, RedirectAttributes rttr) {
+	public ModelAndView qinsert(HttpServletRequest request, ModelAndView mv, QnaVO vo, RedirectAttributes rttr) {
 		
 		if ( service.insert(vo) > 0) {
 			rttr.addFlashAttribute("message", "~~ 새글 등록 성공 ~~");
@@ -97,6 +97,12 @@ public class QnaController {
 				request.setAttribute("Apple", vo);
 				if (loginID.equals("admin")) {
 					mv.setViewName("qna/qnaDetail");
+					
+					vo.setRoot(vo.getBqno());
+					vo = service.selectReply(vo); // 항상 답글 확인
+					if(vo!=null)
+					request.setAttribute("Apple2", vo);
+					
 				}else {
 					mv.addObject("bqno",vo.getBqno());
 					mv.setViewName("qna/qnaPwForm"); 
@@ -131,6 +137,10 @@ public ModelAndView qnapw(HttpServletRequest request, ModelAndView mv, QnaVO vo)
 	    if (vo.getBqpw().equals(pw)) {
 	    	request.setAttribute("Apple", vo);
 			mv.setViewName("qna/qnaDetail");
+			vo.setRoot(vo.getBqno());
+			vo = service.selectReply(vo); // 항상 답글 확인
+			if(vo!=null)
+			request.setAttribute("Apple2", vo);
 	    } else {
 		    mv.setViewName("qna/qnaPwForm");
 		    System.out.println("비밀번호 오류");
@@ -141,21 +151,6 @@ public ModelAndView qnapw(HttpServletRequest request, ModelAndView mv, QnaVO vo)
     }
 	return mv;
 } //qnapw
-
-	
-	// ** Qna List
-	@RequestMapping(value = "/qlist")
-	public ModelAndView qlist(ModelAndView mv) {
-
-		List<QnaVO> list = service.selectList() ;
-		if (list != null) {
-			mv.addObject("Banana", list);
-		}else {
-			mv.addObject("message", "~~ 출력할 자료가 없습니다 ~~");
-		}
-		mv.setViewName("qna/qnaList");
-		return mv;
-	} //qlist 
 			
 	// ** 답글달기
 		@RequestMapping(value = "/qreplyf")
@@ -166,10 +161,14 @@ public ModelAndView qnapw(HttpServletRequest request, ModelAndView mv, QnaVO vo)
 		} //replyf 
 				
 		@RequestMapping(value = "/qreply")
-		public ModelAndView qreply(ModelAndView mv, QnaVO vo, RedirectAttributes rttr) {
+		public ModelAndView qreply(HttpServletRequest request, ModelAndView mv, QnaVO vo, RedirectAttributes rttr) {
 			System.out.println("QnA VO => "+vo);
+			
+			request.setAttribute("Apple2", vo);
+			
 			vo.setStep(vo.getStep()+1);
 			vo.setIndent(vo.getIndent()+1);
+			vo.setId("admin");
 			if (service.replyInsert(vo) > 0) {
 					// 답글 입력 성공
 				rttr.addFlashAttribute("message", "~~ 답글 등록 성공 ~~");

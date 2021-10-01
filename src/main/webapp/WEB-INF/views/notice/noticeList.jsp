@@ -256,7 +256,7 @@ margin:10px;
                 </div>
               </li>
               <c:if test="${loginID==null}">
-              <li class="nav-item"><a class="nav-link" href=loginf>Sign in</a></li>
+              <li class="nav-item"><a class="nav-link" href="loginf">Sign in</a></li>
               <li class="nav-item"><a class="nav-link" href="joinf">Sign up</a></li>
               </c:if>
               <c:if test="${loginID!=null}">
@@ -279,13 +279,7 @@ margin:10px;
     </header>
     <!-- Hero Section-->
     <section class="hero py-6 py-lg-7 text-white dark-overlay"><img class="bg-image" src="resources/myLib/img/noticeboard.jpg" alt="????" >
-      <div class="container overlay-content">
-        <!-- Breadcrumbs -->
-        <ol class="breadcrumb text-white justify-content-center no-border mb-0">
-          <li class="breadcrumb-item"><a href="home">Home</a></li>
-        </ol>
-        <h1 class="hero-heading">Notice</h1>
-      </div>
+      
     </section>
     <section class="py-6">
       <div class="container">

@@ -79,6 +79,10 @@
 	<select id="selectOne" resultType="vo.QnaVO">
 		select * from qna where bqno = #{bqno}
 	</select>
+	
+	<select id="selectReply" resultType="vo.QnaVO">
+		select * from qna where bqno != #{root} and root = #{root}
+	</select>
 <!-- 원글 입력 
 ** selectKey Test         
 -->

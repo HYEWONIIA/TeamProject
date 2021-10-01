@@ -32,18 +32,25 @@ public class HomeController {
 		return "home";
 	} //home
 	
-	@RequestMapping(value = "/ccrypt")
-	public ModelAndView ccrypt(ModelAndView mv) {
+	@RequestMapping(value = "/bcrypt")
+	public ModelAndView bcrypt(ModelAndView mv) {
 		// PasswordEncoder (Interface) -> BCryptpasswordEncoder 구현 클래스 
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String password="12345!";
 		
 		String digest1 = passwordEncoder.encode(password);
+		System.out.println("** digest1 => "+digest1);
 		System.out.println("** matches1 => "+passwordEncoder.matches(password, digest1));
-		
 		mv.setViewName("redirect:home");
 		return mv;
-	} 
+	}//crypt
+
+	// ** Access_denied-handler (403 오류 화면 출력하기)
+	@RequestMapping(value = "/accessError")
+	public ModelAndView accessError(ModelAndView mv) {
+		mv.setViewName("errorPage/exception_403");
+		return mv;
+	}//error
 	
 	// ** AjaxTest Main Form	
 	@RequestMapping(value = "/aboard")
@@ -51,5 +58,11 @@ public class HomeController {
 		mv.setViewName("aboardf");
 		return mv;
 	} //Board
-
-}
+	
+	// ** 통합회원 회원가입	
+	@RequestMapping(value = "/joinf_total")
+	public ModelAndView joinf_total(ModelAndView mv) {
+		mv.setViewName("company/joinForm_total");
+		return mv;
+	} //Board
+}//class

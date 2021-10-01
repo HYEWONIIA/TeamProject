@@ -233,9 +233,7 @@
       <!-- /Navbar -->
     </header>
     <section class="hero py-6 py-lg-7 text-white dark-overlay"><img class="bg-image" src="resources/myLib/img/review.jpg" alt="">
-      <div class="container py-7">
-     
-      </div> 
+    
     </section>
   <section>
       <div class="container">
@@ -271,8 +269,8 @@
                     <c:if test="${loginID==Apple.id || loginID=='admin'}">
 	                   <a href="rdelete?brno=${Apple.brno}">글삭제</a>&nbsp;
                     </c:if>
-                    <c:if test="${loginID=='admin'}">
-	                   <a href="replyf?root=${Apple.root}&step=${Apple.step}&indent=${Apple.indent}">답글등록</a>&nbsp;
+                    <c:if test="${loginID=='admin' || CnoID!=null}">
+	                   <a href="replyf?root=${Apple.root}&step=${Apple.step}&brtitle=${Apple.brtitle}&indent=${Apple.indent}">답글등록</a>&nbsp;
                     </c:if>
                 </c:if>  
                 <br><br><br>  

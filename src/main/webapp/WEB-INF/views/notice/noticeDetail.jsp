@@ -235,12 +235,7 @@
       </nav>
       <!-- /Navbar -->
     </header>
-    <section class="hero py-6 py-lg-7 text-white dark-overlay"><img class="bg-image" src="resources/myLib/img/noticeboard.jpg" alt="">
-      <div class="container py-7">
-     <!--   <div class="overlay-content text-center text-white">
-          <h1 class="display-3 text-serif font-weight-bold text-shadow mb-0">Escape the city today</h1>
-        </div> -->
-      </div> 
+    <section class="hero py-6 py-lg-7 text-white dark-overlay"><img class="bg-image" src="resources/myLib/img/noticeboard.jpg" alt=""> 
     </section>
   <section>
       <div class="container">

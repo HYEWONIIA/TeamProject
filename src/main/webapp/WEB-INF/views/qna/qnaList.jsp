@@ -34,20 +34,59 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  </head>
+<script>
+	$(function() {
+		// SearchType 이 '---' 면 keyword 클리어
+		$('#searchType').change(function() {
+			if ($(this).val() == 'n')
+				$('#keyword').val('');
+		}); //change
+
+		$('#searchBtn').on(
+				"click",
+				function() {
+					self.location = "qlist" + "${pageMaker.makeQuery(1)}"
+							+ "&searchType=" + $('#searchType').val()
+							+ '&keyword=' + $('#keyword').val()
+
+				}); //on_click
+
+	}) //ready
+</script>
+<style type="text/css">
+.search{
+
+text-align:center;
+
+font-size:10px;
+
+color:black;
+
+padding:10px;
+
+margin:10px;
+
+-webkit-border-radius:15px;
+
+}
+</style>
+</head>
   <body style="padding-top: 72px;">
     <header class="header">
       <!-- Navbar-->
       <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
         <div class="container-fluid">
           <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="index.html"><img src="resources/myLib/img/logo.svg" alt="Directory logo"></a>
-            <form class="form-inline d-none d-sm-flex" action="#" id="search">
-              <div class="input-label-absolute input-label-absolute-left input-reset input-expand ml-lg-2 ml-xl-3"> 
-                <label class="label-absolute" for="search_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
-                <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="search_search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-reset btn-sm" type="reset"><i class="fa-times fas"></i></button>
-              </div>
-            </form>
+            <div id="searchBar">
+	            <select class="search" name="searchType" id="searchType">
+		           <option value="n" <c:out value="${pageMaker.cri.searchType==null ? 'selected':''}"/> >---</option>
+		           <option value="t" <c:out value="${pageMaker.cri.searchType=='t' ? 'selected':''}"/> >Title</option>
+		           <option value="w" <c:out value="${pageMaker.cri.searchType=='w' ? 'selected':''}"/> >Writer</option>
+		           <option value="tc" <c:out value="${pageMaker.cri.searchType=='tw' ? 'selected':''}"/> >Title & Writer</option>
+	            </select>
+	            <input class="search" type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword}">
+	            <button class="search" id="searchBtn">Search</button>
+            </div>
           </div>
           <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
           <!-- Navbar Collapse -->
@@ -213,19 +252,15 @@
                   <h6 class="dropdown-header font-weight-normal">Components</h6><a class="dropdown-item" href="docs/components-bootstrap.html">Bootstrap </a><a class="dropdown-item" href="docs/components-directory.html">Theme </a>
                 </div>
               </li>
-              <c:if test="${loginID!=null}">
-              <li class="nav-item"><a class="nav-link" href="login.html">Sign in</a></li>
-              <li class="nav-item"><a class="nav-link" href="joinf">Sign up</a></li>
-              </c:if>
-              <c:if test="${loginID==null}">
-              <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+              <c:if test="${loginID == null}">
+                <li class="nav-item"><a class="nav-link" href="loginf">Sign in</a></li>
+                <li class="nav-item"><a class="nav-link" href="joinf">Sign up</a></li>
+                <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"></li>
               </c:if>
               <c:if test="${loginID!=null}">
-              <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="qinsertf">Add a listing</a></li>
-              </c:if>
-		      <c:if test="${loginID==null}">
-			  <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="loginf">Add a listing</a></li>
-		      </c:if>            
+                <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+                <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="qinsertf">Add a listing</a></li>
+              </c:if>           
 		      </ul>
           </div>
         </div>
@@ -276,6 +311,32 @@
 	                        <td align="center">${list.id}</td>
 	                        <td align="center">${list.bqdate}</td>
                             </tr></c:forEach></table>
+                            <div align="center">
+                               <!-- Paging 2 : Criteria 적용 
+                                    => ver01 : pageMaker.makeQuery(?)
+                                    => ver02 : pageMaker.searchQuery(?)
+                                    1)  First << ,  Prev <  처리 -->
+                               <c:if test="${pageMaker.prev && pageMaker.spageNo>1}">
+                                  <a href="qlist${pageMaker.searchQuery(1)}">FF</a>&nbsp;
+                                  <a href="qlist${pageMaker.searchQuery(pageMaker.spageNo-1)}">Prev</a>
+                               </c:if>
+	
+                               <!-- 2) sPageNo ~ ePageNo 까지, displayPageNo 만큼 표시 -->
+                               <c:forEach var="i" begin="${pageMaker.spageNo}" end="${pageMaker.epageNo}">
+                                  <c:if test="${i==pageMaker.cri.currPage}">
+                                     <font size="5" color="Orange">${i}</font>&nbsp;
+                                  </c:if>
+                                  <c:if test="${i!=pageMaker.cri.currPage}">
+                                     <a href="qlist${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
+                                  </c:if>
+                               </c:forEach>
+                               &nbsp;
+                               <!-- 3) Next >  ,  Last >>  처리 -->
+                               <c:if test="${pageMaker.next && pageMaker.epageNo>0}">
+                                  <a href="qlist${pageMaker.searchQuery(pageMaker.epageNo+1)}">Next</a>&nbsp;
+                                  <a href="qlist${pageMaker.searchQuery(pageMaker.lastPageNo)}">LL</a>&nbsp;&nbsp;
+                               </c:if>
+                            </div>     
                     </div>
                   </div>
                 </div>

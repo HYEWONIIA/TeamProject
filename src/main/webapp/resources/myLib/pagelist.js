@@ -20,7 +20,7 @@ $(function() {
   $('#reviewp').click(function(){
 	$.ajax({
 		type:'Get',
-		url:'rlist',
+		url:'arcplist',
 		success:function(resultPage){
 			$('#resultArea1').html(resultPage);
 		},
@@ -34,7 +34,7 @@ $(function() {
   $('#noticep').click(function(){
 	$.ajax({
 		type:'Get',
-		url:'nlist',
+		url:'ancplist',
 		success:function(resultPage){
 			$('#resultArea1').html(resultPage);
 		},
@@ -48,7 +48,7 @@ $(function() {
   $('#qnap').click(function(){
 	$.ajax({
 		type:'Get',
-		url:'qlist',
+		url:'aqcplist',
 		success:function(resultPage){
 			$('#resultArea1').html(resultPage);
 		},

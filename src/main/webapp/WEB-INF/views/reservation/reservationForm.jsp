@@ -17,7 +17,7 @@
 <script src="resources/resLib/js/app.js"></script>
 <script src="resources/resLib/rperson.js"></script>
 <script src="resources/resLib/rpc.js"></script>
-
+<script src="resources/resLib/calendar.js"></script>
 <script>
 $(function (){
 	$('.calendar').calendar({
