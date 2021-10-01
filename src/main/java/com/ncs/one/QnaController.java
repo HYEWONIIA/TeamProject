@@ -24,6 +24,7 @@ public class QnaController {
 	@Autowired
 	QnaService service;
 	
+	
 	// ** Ajax QnA Title - detail
 	@RequestMapping(value = "/aqdetail")
 	public ModelAndView aqdetail(ModelAndView mv, QnaVO vo) {
@@ -36,19 +37,6 @@ public class QnaController {
 		mv.setViewName("qna/qnaDetail");
 		return mv;
 	} //arlist	
-	
-	// ** Ajax QnaList 
-	@RequestMapping(value = "/aqcplist")
-	public ModelAndView qcplist(ModelAndView mv) {
-		List<QnaVO> list = service.selectList();
-		if (list != null) {
-			mv.addObject("Banana", list);
-		}else {
-			mv.addObject("message", "~~ 출력할 자료가 1건도 없습니다. ~~");
-		}
-		mv.setViewName("qna/qnaList");
-		return mv;
-	} //anlist
 	
 	// ** Notice CriPageList
 	@RequestMapping(value = "/qcplist")
@@ -71,72 +59,91 @@ public class QnaController {
 	// ** 새글등록
 	@RequestMapping(value = "/qinsertf")
 	public ModelAndView qinsertf(ModelAndView mv) {
-		mv.setViewName("qna/qinsertForm");
+		mv.setViewName("qna/qInsertForm");
 		return mv;
 	   } //qinsertf
 	
 	@RequestMapping(value = "/qinsert")
 	public ModelAndView qinsert(ModelAndView mv, QnaVO vo, RedirectAttributes rttr) {
-
+		
 		if ( service.insert(vo) > 0) {
 			rttr.addFlashAttribute("message", "~~ 새글 등록 성공 ~~");
 			mv.setViewName("redirect:qlist"); 
 		}else {
 			mv.addObject("message", "~~ 새글 등록 실패 !! 다시 하세요 ~~");
-			mv.setViewName("qna/qinsertForm");
+			mv.setViewName("qna/qInsertForm");
 		}
 		return mv;
 	} //qinsert	
 	
-	// ** qnapwf	
-	@RequestMapping(value = "/qnapwf")
-	public ModelAndView qnapwf(ModelAndView mv) {
-		mv.setViewName("qna/qnaPwForm");
-		return mv;
-	} //qnapwf
-	
-	// ** qnaPW
-	@RequestMapping(value = "/qnapw")
-	public ModelAndView qnapw(HttpServletRequest request, ModelAndView mv, QnaVO vo) {
-
-		String password = vo.getBqpw(); //User가 입력한값
-		vo = service.selectOne(vo);
-		if (vo!=null) {
-		    if (vo.getBqpw().equals(password)) {
-			    mv.setViewName("redirect:qdetail");
-		    }else {
-			    mv.setViewName("qna/qnaPwForm");
-		    } 
-	    }else {
-			mv.setViewName("pmember/loginForm");
-	    }
-		return mv;
-	} //qnapw
 	// ** 리뷰는 로그인 되어있을때만
 	@RequestMapping(value = "/qdetail")
 	public ModelAndView qdetail(HttpServletRequest request, ModelAndView mv, 
 			QnaVO vo, RedirectAttributes rttr) {
-
+		// ** Detail 처리 조건
+		// => 로그인 했을때만 글내용을 볼 수 있도록 ( boardList.jsp 에서 처리 ) 
+		// => 조회수 증가 
+		//    글쓴이(Parameter 로 전달) 와 글보는이(loginID) 가 달라야 함.
 		HttpSession session = request.getSession(false);
-		
-		String password = vo.getBqpw();
-		if (session != null && vo.getBqpw().equals(password)) {
+		if (session != null && session.getAttribute("loginID") != null) {
+			String loginID = (String)session.getAttribute("loginID");
+			 
 			// 글내용 조회
 			vo = service.selectOne(vo);
 			if (vo != null) {
+				// 답글 존재 확인 
+				
+				// 답글 서비스 selectone 
 				request.setAttribute("Apple", vo);
+				if (loginID.equals("admin")) {
+					mv.setViewName("qna/qnaDetail");
+				}else {
+					mv.addObject("bqno",vo.getBqno());
+					mv.setViewName("qna/qnaPwForm"); 
+				}
 			}else {
 				rttr.addFlashAttribute("message", "~~ 글번호에 해당하는 글을 찾을 수 없습니다 ~~");
 				mv.setViewName("redirect:qlist"); 
 			}
 		}else {
 			mv.addObject("message", "~~ 로그인 정보가 없습니다 !! 로그인 후 다시 하세요  ~~");
-			mv.setViewName("로그인폼"); 
+			mv.setViewName("member/loginForm"); 
 		}
 		return mv;
-	} //qdetail	
+		
+	} //qdetail			
 	
-	// ** Review List
+// ** qnapwf	
+@RequestMapping(value = "/qnapwf")
+public ModelAndView qnapwf(ModelAndView mv) {
+	mv.setViewName("qna/qnaPwForm");
+	return mv;
+} //qnapwf
+
+// ** qnaPW
+@RequestMapping(value = "/qnapw")
+public ModelAndView qnapw(HttpServletRequest request, ModelAndView mv, QnaVO vo) {
+    System.out.println("qnaPW Test 1"+vo);
+	String pw = vo.getBqpw();	
+	vo = service.selectOne(vo); // 항상 원글 확인
+	System.out.println("qnaPW Test 2"+vo);
+	if (vo!=null) {
+	    if (vo.getBqpw().equals(pw)) {
+	    	request.setAttribute("Apple", vo);
+			mv.setViewName("qna/qnaDetail");
+	    } else {
+		    mv.setViewName("qna/qnaPwForm");
+		    System.out.println("비밀번호 오류");
+	    } 
+    }else {
+    	mv.setViewName("redirect:qlist");
+		System.out.println("글번호에 해당하는 글을 찾을 수 없습니다");
+    }
+	return mv;
+} //qnapw
+
+	
+	// ** Qna List
 	@RequestMapping(value = "/qlist")
 	public ModelAndView qlist(ModelAndView mv) {
 
@@ -148,30 +155,30 @@ public class QnaController {
 		}
 		mv.setViewName("qna/qnaList");
 		return mv;
-	} //qlist
-	
-	// ** 답글달기
-	@RequestMapping(value = "/qreplyf")
-	public ModelAndView qreplyf(ModelAndView mv, QnaVO vo) {
-		log.info("** replyf vo :"+vo);
-		mv.setViewName("qna/replyForm");
-		return mv;
-	} //replyf 
+	} //qlist 
 			
-	@RequestMapping(value = "/qreply")
-	public ModelAndView qreply(ModelAndView mv, QnaVO vo, RedirectAttributes rttr) {
-		
-		vo.setStep(vo.getStep()+1);
-		vo.setIndent(vo.getIndent()+1);
-		if (service.replyInsert(vo) > 0) {
-				// 답글 입력 성공
-			rttr.addFlashAttribute("message", "~~ 답글 등록 성공 ~~");
-		}else { // 답글 입력 실패
-			rttr.addFlashAttribute("message", "~~ 답글 등록 실패 ~~");
-		}
-		mv.setViewName("redirect:qlist");
-		return mv;
-		} //qreply 
+	// ** 답글달기
+		@RequestMapping(value = "/qreplyf")
+		public ModelAndView qreplyf(ModelAndView mv, QnaVO vo) {
+			log.info("** replyf vo :"+vo);
+			mv.setViewName("qna/replyForm");
+			return mv;
+		} //replyf 
+				
+		@RequestMapping(value = "/qreply")
+		public ModelAndView qreply(ModelAndView mv, QnaVO vo, RedirectAttributes rttr) {
+			System.out.println("QnA VO => "+vo);
+			vo.setStep(vo.getStep()+1);
+			vo.setIndent(vo.getIndent()+1);
+			if (service.replyInsert(vo) > 0) {
+					// 답글 입력 성공
+				rttr.addFlashAttribute("message", "~~ 답글 등록 성공 ~~");
+			}else { // 답글 입력 실패
+				rttr.addFlashAttribute("message", "~~ 답글 등록 실패 ~~");
+			}
+			mv.setViewName("redirect:qlist");
+			return mv;
+			} //qreply 
 
 	@RequestMapping(value = "/qdelete")
 	public ModelAndView qdelete(ModelAndView mv, QnaVO vo, RedirectAttributes rttr) {
@@ -184,5 +191,4 @@ public class QnaController {
 		}
 		return mv;
 	} //rdelete	
-	
 } //class

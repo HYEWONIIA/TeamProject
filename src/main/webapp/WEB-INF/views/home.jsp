@@ -65,7 +65,7 @@ function setClock() {
 <a href="comlist">comList</a>&nbsp;
 <hr>
 <a href="aboard">Board</a>&nbsp;&nbsp;
-<a href="qinsertf">문의</a>&nbsp;&nbsp;
+<a href="nlist">문의</a>&nbsp;&nbsp;
 <hr>
 <a href="rmainf">예약하기 메인</a>&nbsp;&nbsp;
 

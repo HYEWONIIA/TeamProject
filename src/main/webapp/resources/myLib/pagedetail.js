@@ -5,10 +5,7 @@
 function titleRDetail(brno) {
 	$.ajax({
 		type: 'Get',
-		url:'ardetail?brno='+brno,
-		data:{
-			brno:brno
-		},		
+		url:'rdetail?brno='+brno,	
 		success:function(resultPage){
 			$('#resultArea1').html(resultPage);
 		},
@@ -22,10 +19,7 @@ function titleRDetail(brno) {
 function titleNDetail(bfno) {
 	$.ajax({
 		type: 'Get',
-		url:'andetail?bfno='+bfno,
-		data:{
-			bfno:bfno
-		},		
+		url:'ndetail?bfno='+bfno,		
 		success:function(resultPage){
 			$('#resultArea1').html(resultPage);
 		},
@@ -39,10 +33,7 @@ function titleNDetail(bfno) {
 function titleQDetail(bqno) {
 	$.ajax({
 		type: 'Get',
-		url:'aqdetail?bqno='+bqno,
-		data:{
-			bqno:bqno
-		},		
+		url:'qdetail?bqno='+bqno,		
 		success:function(resultPage){
 			$('#resultArea1').html(resultPage);
 		},

@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>** Spring Mybatis Review Cri_PageList **</title>
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>** Review Cri_PageList **</title>
 <link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css" >
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script src="resources/myLib/pagelist.js"></script>
@@ -20,7 +21,7 @@ $(function() {
 	}); //change
 	
 	$('#searchBtn').on("click", function() {
-		self.location="rcplist"
+		self.location="ncplist"
 			+"${pageMaker.makeQuery(1)}"
 			+"&searchType="
 			+$('#searchType').val()
@@ -52,10 +53,11 @@ $(function() {
 <br>
 <table class="noticeTable">
 <tr height="40" bgcolor="PaleTurquoise">
-	<th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th>
+	<th>번호</th><th>작성자</th><th>제목</th><th>작성일</th><th>조회수</th>
 </tr>
-<c:forEach var="list" items="${Pink}"><tr height="40">
+<c:forEach var="list" items="${Banana}"><tr height="40">
 	<td>${list.bfno}</td>
+	<td>${list.id}</td>
 	<td>
 		<!-- 로그인 했을때만 글내용을 볼 수 있도록 -->
 		<c:if test="${loginID!=null}">
@@ -65,7 +67,7 @@ $(function() {
 			${list.bftitle}
 		</c:if>
 	</td>
-	<td>${list.id}</td><td>${list.bfdate}</td><td align="center">${list.bfcnt}</td>
+	<td>${list.bfdate}</td><td align="center">${list.bfcnt}</td>
 </tr></c:forEach>
 </table>
 <br><hr>
@@ -98,11 +100,13 @@ $(function() {
 </div>
 
 <br><hr>
+<c:if test="${loginID=='admin'}"> 	
+<a href="ninsertf">새글등록</a>&nbsp;&nbsp; 
+</c:if> 
 <c:if test="${loginID!=null}"> 	
-	<a href="ninsertf">새글등록</a>&nbsp;&nbsp;
 	<a href="logout">Logout</a>&nbsp;&nbsp;
-</c:if>  
-<c:if test="${loginID==null}"> 
+</c:if> 
+<c:if test="${loginID==null && loginCno==null}"> 
 	<a href="loginf">로그인</a>&nbsp;&nbsp;
 	<a href="joinf">회원가입</a>&nbsp;&nbsp;
 </c:if>

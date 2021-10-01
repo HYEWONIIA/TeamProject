@@ -20,7 +20,7 @@ $(function() {
 	}); //change
 	
 	$('#searchBtn').on("click", function() {
-		self.location="rcplist"
+		self.location="qcplist"
 			+"${pageMaker.makeQuery(1)}"
 			+"&searchType="
 			+$('#searchType').val()
@@ -52,9 +52,9 @@ $(function() {
 <br>
 <table>
 <tr height="40" bgcolor="PaleTurquoise">
-	<th>번호</th><th>제목</th><th>작성자</th><th>작성일</th>
+	<th>번호</th><th>작성자</th><th>제목</th><th>작성일</th>
 </tr>
-<c:forEach var="list" items="${Blue}"><tr height="40">
+<c:forEach var="list" items="${Banana}"><tr height="40">
 	<td>${list.bqno}</td>
 	<td>
 		<!-- 답글 등록후 indent 에 따른 들여쓰기 
@@ -65,16 +65,18 @@ $(function() {
 			</c:forEach>
 			<span style="color:Purple">└</span>
 		</c:if>
-	
+	</td>
+	<td>${list.id}</td>
+	<td>
 		<!-- 로그인 했을때만 글내용을 볼 수 있도록 -->
-		<c:if test="${loginID!=null}">
+		<c:if test="${loginID!=null && loginCno!=null}">
 			<a href="#resultArea1" onclick="titleQDetail(${list.bqno})">${list.bqtitle}</a>
 		</c:if>
-		<c:if test="${loginID==null}">
+		<c:if test="${loginID==null && loginCno==null}">
 			${list.bqtitle}
 		</c:if>
 	</td>
-	<td>${list.id}</td><td>${list.bqdate}</td>
+	<td>${list.bqdate}</td>
 </tr></c:forEach>
 </table>
 <br><hr>
@@ -107,7 +109,7 @@ $(function() {
 </div>
 
 <br><hr>
-<c:if test="${loginID!=null && loginCno!=null}"> 	
+<c:if test="${loginID!=null}"> 	
 	<a href="qinsertf">새글등록</a>&nbsp;&nbsp;
 	<a href="logout">Logout</a>&nbsp;&nbsp;
 </c:if>  
