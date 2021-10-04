@@ -272,10 +272,7 @@ margin:10px;
     <section class="hero py-6 py-lg-7 text-white dark-overlay"><img class="bg-image" src="resources/myLib/img/question.png" alt="????" >
       <div class="container overlay-content">
         <!-- Breadcrumbs -->
-        <ol class="breadcrumb text-white justify-content-center no-border mb-0">
-          <li class="breadcrumb-item"><a href="home">Home</a></li>
-        </ol>
-        <h1 class="hero-heading">QnA</h1>
+        <a href="home" class="breadcrumb text-white justify-content-center"><h1 class="hero-heading">Home</h1></a>
       </div>
     </section>
     <section class="py-6">

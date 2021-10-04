@@ -28,20 +28,6 @@ public class NoticeController {
 	
 	@Autowired
 	NoticeService service;
-
-	// ** Ajax review Title - detail
-	@RequestMapping(value = "/andetail")
-	public ModelAndView andetail(HttpServletResponse response,ModelAndView mv, NoticeVO vo) {
-		
-		List<NoticeVO> list = service.selectList();
-		if (list != null) {
-			mv.addObject("Banana", list);
-		}else {
-			mv.addObject("message", "~~ 출력할 자료가 1건도 없습니다. ~~");
-		}
-		mv.setViewName("notice/noticeDetail");
-		return mv;
-	} //aNDetail
 	
 	// ** Notice CriPageList
 	@RequestMapping(value = "/nlist")

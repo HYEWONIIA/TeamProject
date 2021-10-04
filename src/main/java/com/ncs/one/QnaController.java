@@ -24,20 +24,6 @@ public class QnaController {
 	@Autowired
 	QnaService service;
 	
-	
-	// ** Ajax QnA Title - detail
-	@RequestMapping(value = "/aqdetail")
-	public ModelAndView aqdetail(ModelAndView mv, QnaVO vo) {
-		List<QnaVO> list = service.titleQDetail(vo);
-		if (list != null) {
-			mv.addObject("Banana", list);
-		}else {
-			mv.addObject("message", "~~ 출력할 자료가 1건도 없습니다. ~~");
-		}
-		mv.setViewName("qna/qnaDetail");
-		return mv;
-	} //arlist	
-	
 	// ** Qna List
 	@RequestMapping(value = "/qlist")
 	public ModelAndView qlist(ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {

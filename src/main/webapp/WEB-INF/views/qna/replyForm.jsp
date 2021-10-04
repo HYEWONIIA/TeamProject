@@ -227,7 +227,7 @@
       <!-- /Navbar -->
     </header>
     <!-- Hero Section-->
-    <section class="hero py-6 py-lg-7 text-white dark-overlay"><img class="bg-image" src="resources/myLib/img/noticeboard.jpg" alt="Text page">
+    <section class="hero py-6 py-lg-7 text-white dark-overlay"><img class="bg-image" src="resources/myLib/img/question.png" alt="Text page">
       <div class="container overlay-content">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb text-white justify-content-center no-border mb-0">

@@ -41,28 +41,14 @@
       <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
         <div class="container-fluid">
           <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="index.html"><img src="resources/myLib/img/logo.svg" alt="Directory logo"></a>
-            <form class="form-inline d-none d-sm-flex" action="#" id="search">
-              <div class="input-label-absolute input-label-absolute-left input-reset input-expand ml-lg-2 ml-xl-3"> 
-                <label class="label-absolute" for="search_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
-                <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="search_search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-reset btn-sm" type="reset"><i class="fa-times fas"></i></button>
-              </div>
-            </form>
           </div>
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
           <!-- Navbar Collapse -->
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <form class="form-inline mt-4 mb-2 d-sm-none" action="#" id="searchcollapsed">
-              <div class="input-label-absolute input-label-absolute-left input-reset w-100">
-                <label class="label-absolute" for="searchcollapsed_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
-                <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="searchcollapsed_search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-reset btn-sm" type="reset"><i class="fa-times fas">           </i></button>
-              </div>
-            </form>
             <ul class="navbar-nav ml-auto">
+              <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="homeDropdownMenuLink" href="index.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   Home</a>
-                <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item" href="index.html">Rooms</a><a class="dropdown-item" href="index-2.html">Restaurants</a><a class="dropdown-item" href="index-3.html">Travel</a><a class="dropdown-item" href="index-4.html">Real Estate <span class="badge badge-info-light ml-1 mt-n1">New</span></a></div>
+                   게시판메뉴</a>
+                <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item" href="rlist">후기</a><a class="dropdown-item" href="nlist">공지</a><a class="dropdown-item" href="qlist">QnA</a></div>
               </li>
               <!-- Megamenu-->
               <li class="nav-item dropdown position-static"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Template</a>
@@ -198,44 +184,40 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-3 d-none d-lg-block"><img class="bg-image" src="resources/myLib/img/noticeboard.jpg" alt=""></div>
+                    <div class="col-lg-3 d-none d-lg-block"><img class="bg-image" src="resources/myLib/img/photo/photo-1521170665346-3f21e2291d8b.jpg" alt=""></div>
                   </div>
                 </div>
               </li>
               <!-- /Megamenu end-->
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
-              </li>
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="docsDropdownMenuLink" href="index.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   Docs</a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="docsDropdownMenuLink">
-                  <h6 class="dropdown-header font-weight-normal">Documentation</h6><a class="dropdown-item" href="docs/docs-introduction.html">Introduction </a><a class="dropdown-item" href="docs/docs-directory-structure.html">Directory structure </a><a class="dropdown-item" href="docs/docs-gulp.html">Gulp </a><a class="dropdown-item" href="docs/docs-customizing-css.html">Customizing CSS </a><a class="dropdown-item" href="docs/docs-credits.html">Credits </a><a class="dropdown-item" href="docs/docs-changelog.html">Changelog </a>
-                  <div class="dropdown-divider"></div>
-                  <h6 class="dropdown-header font-weight-normal">Components</h6><a class="dropdown-item" href="docs/components-bootstrap.html">Bootstrap </a><a class="dropdown-item" href="docs/components-directory.html">Theme </a>
-                </div>
-              </li>
               <c:if test="${loginID==null}">
-              <li class="nav-item"><a class="nav-link" href="loginf">Sign in</a></li>
-              <li class="nav-item"><a class="nav-link" href="joinf">Sign up</a></li>
+              <li class="nav-item"><a class="nav-link" href="loginf">로그인</a></li>
+              <li class="nav-item"><a class="nav-link" href="joinf">회원가입</a></li>
               </c:if>
               <c:if test="${loginID!=null}">
-              <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+              <li class="nav-item"><a class="nav-link" href="logout">로그아웃</a></li>
               </c:if>
-              <c:if test="${loginID!=null}">
-                  <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="rinsertf">Add a listing</a></li>
-                </c:if>
-              <c:if test="${loginID!=null}">  
+              <c:if test="${loginID!=null && loginID !='admin'}">
+                  <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="rinsertf">글쓰기</a></li>
+              </c:if>
+              <c:if test="${loginID =='admin' || loginCno!=null }">
+                  <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="replyf?brno=${Apple.brno}&root=${Apple.root}&step=${Apple.step}&brtitle=${Apple.brtitle}&indent=${Apple.indent}">답글등록</a></li>
+              </c:if>
+              <c:if test="${loginID==null}">  
                   <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"></li>
-              </c:if>
-            </ul>
+              </c:if>          
+		      </ul>
           </div>
         </div>
       </nav>
       <!-- /Navbar -->
     </header>
-    <section class="hero py-6 py-lg-7 text-white dark-overlay"><img class="bg-image" src="resources/myLib/img/review.jpg" alt="">
-    
+    <!-- Hero Section-->
+    <section class="hero py-6 py-lg-7 text-white dark-overlay"><img class="bg-image" src="resources/myLib/img/review.jpg" alt="????" >
+      <div class="container overlay-content">
+        <!-- Breadcrumbs -->
+        <a href="rlist" class="breadcrumb text-white justify-content-center"><h1 class="hero-heading">Review</h1></a>
+      </div>
     </section>
-  <section>
       <div class="container">
         <div class="row">
           <div class="col-xl-8 col-lg-10 mx-auto">           
@@ -268,9 +250,6 @@
                 <c:if test="${loginID!=null}"> 	
                     <c:if test="${loginID==Apple.id || loginID=='admin'}">
 	                   <a href="rdelete?brno=${Apple.brno}">글삭제</a>&nbsp;
-                    </c:if>
-                    <c:if test="${loginID=='admin' || CnoID!=null}">
-	                   <a href="replyf?root=${Apple.root}&step=${Apple.step}&brtitle=${Apple.brtitle}&indent=${Apple.indent}">답글등록</a>&nbsp;
                     </c:if>
                 </c:if>  
                 <br><br><br>  
