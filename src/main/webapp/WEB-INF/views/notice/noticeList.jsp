@@ -120,6 +120,10 @@ margin:10px;
     </header>
     <!-- Hero Section-->
     <section class="hero py-6 py-lg-7 text-white dark-overlay"><img class="bg-image" src="resources/myLib/img/noticeboard.jpg" alt="????" >
+      <div class="container overlay-content">
+        <!-- Breadcrumbs -->
+        <a href="#" class="breadcrumb text-white justify-content-center"><h1 class="hero-heading"><br></h1></a>
+      </div>
     </section>
     <section class="py-6">
       <div class="container">

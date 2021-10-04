@@ -42,6 +42,7 @@
         <div class="container-fluid">
           <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="index.html"><img src="resources/myLib/img/logo.svg" alt="Directory logo"></a>
           </div>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>          
           <!-- Navbar Collapse -->
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav ml-auto">
@@ -50,13 +51,6 @@
                    게시판메뉴</a>
                 <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item" href="rlist">후기</a><a class="dropdown-item" href="nlist">공지</a><a class="dropdown-item" href="qlist">QnA</a></div>
               </li>
-              <!-- Megamenu-->
-              <li class="nav-item dropdown position-static"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Template</a>
-                <div class="dropdown-menu megamenu py-lg-0">
-                  <div class="row">
-                    <div class="col-lg-9">
-                      <div class="row p-3 pr-lg-0 pl-lg-5 pt-lg-5">
-                        <div class="col-lg-3">
               <c:if test="${loginID==null}">
               <li class="nav-item"><a class="nav-link" href="loginf">로그인</a></li>
               <li class="nav-item"><a class="nav-link" href="joinf">회원가입</a></li>
@@ -116,7 +110,7 @@
             <br><br><br>
             <div class="col-xl-8 col-lg-10 mx-auto" align="center">           
                 <c:if test="${loginID!=null}"> 	
-                    <c:if test="${loginID==Apple.id || loginID=='admin'}">
+                    <c:if test="${loginID == Apple.id || loginID == 'admin'}">
 	                   <a href="rdelete?brno=${Apple.brno}">글삭제</a>&nbsp;
                     </c:if>
                 </c:if>  

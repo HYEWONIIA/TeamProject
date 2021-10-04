@@ -113,7 +113,7 @@ function bqpwCheck(){
 		$('#pwMessage').html('비밀번호는 4글자 이상 입력하세요.');
 		return false;
 	}else if (bqpw.replace(/[0-9].[!-*]/gi,'').length >= bqpw.length) {
-		$('#pwMessage').html('비밀번호는 영문자/특수문자 로 만 입력하세요.');
+		$('#pwMessage').html('비밀번호는 숫자.특수문자 로 입력하세요.');
 		return false;
 	}else {
 		$('#pwMessage').html('');

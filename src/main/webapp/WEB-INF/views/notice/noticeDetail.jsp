@@ -42,7 +42,7 @@
         <div class="container-fluid">
           <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="index.html"><img src="resources/myLib/img/logo.svg" alt="Directory logo"></a>
           </div>
-
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
           <!-- Navbar Collapse -->
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav ml-auto">
@@ -80,6 +80,12 @@
         <a href="nlist" class="breadcrumb text-white justify-content-center"><h1 class="hero-heading">Notice</h1></a>
       </div>
      </c:if> 
+     <c:if test="${loginID!=null && loginID!='admin'}">
+      <div class="container overlay-content">
+        <!-- Breadcrumbs -->
+        <a href="#" class="breadcrumb text-white justify-content-center"><h1 class="hero-heading"><br></h1></a>
+      </div>
+     </c:if>
     </section>
   <section>
       <div class="container">

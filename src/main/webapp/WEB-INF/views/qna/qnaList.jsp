@@ -132,7 +132,7 @@ margin:10px;
                 <div class="row">
                     <div class="form-group">
                       <table class="table">
-                         <tr height="40" bgcolor="White ">
+                         <tr height="40" bgcolor="White" align="center">
 	                         <th width="50">번호</th><th width="300">제목</th><th width="100">작성자</th><th width="100">작성일</th>
                          </tr>
                          <c:forEach var="list" items="${Banana}"><tr height="40">

@@ -58,14 +58,8 @@
               <li class="nav-item"><a class="nav-link" href="logout">로그아웃</a></li>
               </c:if>
               <c:if test="${loginID!=null && loginID=='admin'}">
-                  <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="ninsertf">글쓰기</a></li>
-                </c:if>
-              <c:if test="${loginID!=null && loginID!='admin'}">  
                   <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="nlist">Notice</a></li>
-              </c:if>
-		      <c:if test="${loginID==null}">
-			  <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"></li>
-		      </c:if>           
+                </c:if>      
 		      </ul>
           </div>
         </div>
@@ -77,7 +71,7 @@
      <c:if test="${loginID!=null && loginID=='admin'}">
       <div class="container overlay-content">
         <!-- Breadcrumbs -->
-        <a href="nlist" class="breadcrumb text-white justify-content-center"><h1 class="hero-heading">Notice</h1></a>
+        <a href="nlist" class="breadcrumb text-white justify-content-center"><h1 class="hero-heading"><br></h1></a>
       </div>
      </c:if> 
     </section>
