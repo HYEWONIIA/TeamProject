@@ -61,7 +61,7 @@
               <c:if test="${loginID!=null && loginID !='admin' || loginCno!=null}">
                   <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="qinsertf">글쓰기</a></li>
               </c:if>
-              <c:if test="${loginID == 'admin'}">
+              <c:if test="${Apple2 ==null && loginID == 'admin'}">
                   <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="qreplyf?bqno=${Apple.bqno}&id=${loginID}&root=${Apple.root}&indent=${Apple.indent}&step=${Apple.step}&bqpw=${Apple.bqpw}&bqcontent=${Apple.bqcontent}">답글등록</a></li>
               </c:if>
               <c:if test="${loginID==null}">  

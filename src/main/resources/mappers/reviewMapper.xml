@@ -101,7 +101,7 @@
 			select nvl(max(brno),0)+1 from review
 		</selectKey>
 		insert into review values ( 
-			#{brno},#{id},#{brcity},#{brtitle},#{brcontent},#{brfile},#{brating},<!-- #{brcno}, -->SYSDATE,0,
+			#{brno},#{id},#{brcity},#{brtitle},#{brcontent},#{brfile},#{brating}<!-- ,#{brcno} -->,SYSDATE,0,
 			#{brno},0,0)
 	</insert>
 	

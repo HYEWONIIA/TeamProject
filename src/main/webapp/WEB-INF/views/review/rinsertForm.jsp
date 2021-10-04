@@ -91,7 +91,7 @@
                     </div>
                     <div class="form-group">
                       <label class="form-label" for="brcity">도시</label>
-                      <div class="form-group"><select name="brcity" id="city">
+                      <div class="form-group"><select name="brcity" id="city" required="required">
                        <option value="거제">거제</option>
                        <option value="경주">경주</option>
                        <option value="고양">고양</option>
@@ -168,7 +168,7 @@
   		          </script>  
                 </div>
                 <div class="form-group">
-                  <%@ include file="star.html" %>
+                  <%@ include file="star.html" required="required"%>
                   <input type="hidden" name="brating" id="brating">
                 </div>
                 <input class="btn btn-outline-primary" type="submit" value="전송">

@@ -61,10 +61,10 @@
               <c:if test="${loginID!=null && loginID !='admin'}">
                   <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="rinsertf">글쓰기</a></li>
               </c:if>
-              <c:if test="${loginID =='admin' || loginCno!=null }">
+              <c:if test="${loginID=='admin'}">
                   <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="replyf?brno=${Apple.brno}&root=${Apple.root}&step=${Apple.step}&brtitle=${Apple.brtitle}&indent=${Apple.indent}">답글등록</a></li>
               </c:if>
-              <c:if test="${loginID==null}">  
+              <c:if test="${loginID==null }">  
                   <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"></li>
               </c:if>          
 		      </ul>

@@ -140,7 +140,7 @@ margin:10px;
 	                        <td align="center">${list.bfno}</</td>
 	                        <td align="center">
 		                    <!-- 로그인 했을때만 글내용을 볼 수 있도록 -->
-		                    <c:if test="${loginID!=null}">
+		                    <c:if test="${loginID!=null || loginCno!=null}">
 			                  <a class="a"  href="ndetail?bfno=${list.bfno}&id=${list.id}">${list.bftitle}</a>
 		                    </c:if>
 		                    <c:if test="${loginID==null}">

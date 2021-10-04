@@ -90,6 +90,10 @@
                       <input class="form-control" type="text" name="brno" value="${reviewVO.brno}" readonly >
                     </div>
                     <div class="form-group">
+                      <label class="form-label" for="brno">작성자 *</label>
+                      <input class="form-control" type="text" name="id" value="${loginID}" readonly >
+                    </div>
+                    <div class="form-group">
                       <label class="form-label" for="brtitle">제목 *</label>
                       <input class="form-control" type="text" name="brtitle" id="brtitle" placeholder="Enter your title" required="required">
                     </div>

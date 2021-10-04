@@ -148,7 +148,7 @@ margin:10px;
 			                 <span style="color:Purple">└</span>
 		                    </c:if>
 		                    <!-- 로그인 했을때만 글내용을 볼 수 있도록 -->
-		                    <c:if test="${loginID!=null}">
+		                    <c:if test="${loginID!=null || loginCno!=null}">
 			                  <a class="a"  href="qdetail?bqno=${list.root}&id=${list.id}">${list.bqtitle}</a>
 		                    </c:if>
 		                    <c:if test="${loginID==null}">
