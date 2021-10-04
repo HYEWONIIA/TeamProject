@@ -66,7 +66,7 @@
               </li>
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="homeDropdownMenuLink" href="home" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    COMMUNITY</a>
-               	<div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item" href="aboard">Notice</a><a class="dropdown-item" href="aboard">Q&A</a><a class="dropdown-item" href="aboard">Review <span class="badge badge-info-light ms-1 mt-n1">New</span></a></div>
+               	<div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item" href="nlist">Notice</a><a class="dropdown-item" href="qlist">Q&A</a><a class="dropdown-item" href="rlist">Review</a></div>
               </li>
 			  <!-- 관리자일때만 메뉴확인가능 -->
 			  <c:if test="${loginID == 'admin'}">

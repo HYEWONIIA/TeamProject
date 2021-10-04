@@ -70,13 +70,11 @@ margin:10px;
 -webkit-border-radius:15px;
 
 }
-
-
 </style>
 </head>
   <body style="padding-top: 72px;">
     <header class="header">
-      <!-- Navbar-->
+      <!-- Navbar -->
       <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
         <div class="container-fluid">
           <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="index.html"><img src="resources/myLib/img/logo.svg" alt="Directory logo"></a>
@@ -100,144 +98,6 @@ margin:10px;
                    게시판메뉴</a>
                 <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item" href="rlist">후기</a><a class="dropdown-item" href="nlist">공지</a><a class="dropdown-item" href="qlist">QnA</a></div>
               </li>
-              <!-- Megamenu-->
-              <li class="nav-item dropdown position-static"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Template</a>
-                <div class="dropdown-menu megamenu py-lg-0">
-                  <div class="row">
-                    <div class="col-lg-9">
-                      <div class="row p-3 pr-lg-0 pl-lg-5 pt-lg-5">
-                        <div class="col-lg-3">
-                          <!-- Megamenu list-->
-                          <h6 class="text-uppercase">Homepage</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Rooms   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="index-2.html">Restaurants   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="index-3.html">Travel   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="index-4.html">Real estate <span class="badge badge-info-light ml-1">New</span>   </a></li>
-                          </ul>
-                          <!-- Megamenu list-->
-                          <h6 class="text-uppercase">Restaurants</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="category.html">Category - Map on the top   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-2.html">Category - Map on the right   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-3.html">Category - no map   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="detail.html">Restaurant detail   </a></li>
-                          </ul>
-                        </div>
-                        <div class="col-lg-3">
-                          <!-- Megamenu list-->
-                          <h6 class="text-uppercase">Rooms</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-rooms.html">Category - Map on the top   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-2-rooms.html">Category - Map on the right   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-3-rooms.html">Category - no map   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="detail-rooms.html">Room detail   </a></li>
-                          </ul>
-                          <!-- Megamenu list-->
-                          <h6 class="text-uppercase">Blog</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="rlist">Review   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="nlist">Notice   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="qlist">QnA  </a></li>
-                          </ul>
-                          <!-- Megamenu list-->
-                          <h6 class="text-uppercase">Pages</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="compare.html">Comparison   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="team.html">Team   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="contact.html">Contact   </a></li>
-                          </ul>
-                        </div>
-                        <div class="col-lg-3">
-                          <!-- Megamenu list-->
-                          <h6 class="text-uppercase">Pages</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="pricing.html">Pricing   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="text.html">Text page   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="faq.html">F.A.Q.s   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="coming-soon.html">Coming soon   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="404.html">404 page   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="knowledge-base.html">Knowledge Base  <span class="badge badge-info-light ml-1">New</span>   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="knowledge-base-topic.html">Knowledge Base  &mdash; Topic<span class="badge badge-info-light ml-1">New</span>   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="terms.html">Terms & Conditions  <span class="badge badge-info-light ml-1">New</span>   </a></li>
-                          </ul>
-                          <!-- Megamenu list-->
-                          <h6 class="text-uppercase">Host</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-add-0.html">Add new listing - 6 pages   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-list.html">Bookings &mdash; list view   </a></li>
-                          </ul>
-                        </div>
-                        <div class="col-lg-3">
-                          <!-- Megamenu list-->
-                          <h6 class="text-uppercase">User</h6>
-                          <ul class="megamenu-list list-unstyled">
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-profile.html">Profile   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-account.html">Account   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-personal.html">Personal info - forms   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-security.html">Password & security - forms   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="login.html">Sign in   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="signup.html">Sign up   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-booking-1.html">Booking process - 4 pages   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-grid.html">Bookings &mdash; grid view   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-booking-detail.html">Booking detail   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-invoice.html">Invoice  <span class="badge badge-info-light ml-1">New</span>   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-messages.html">Messages <span class="badge badge-info-light ml-1">New</span>   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-messages-detail.html">Message Detail  <span class="badge badge-info-light ml-1">New</span>   </a></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="row megamenu-services d-none d-lg-flex pl-lg-5">
-                        <div class="col-xl-3 col-lg-6 d-flex">
-                          <div class="megamenu-services-item">
-                            <svg class="svg-icon megamenu-services-icon">
-                              <use xlink:href="#destination-map-1"> </use>
-                            </svg>
-                            <div>
-                              <h6 class="text-uppercase">Best rentals</h6>
-                              <p class="mb-0 text-muted text-sm">Find the perfect place</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 d-flex">
-                          <div class="megamenu-services-item">
-                            <svg class="svg-icon megamenu-services-icon">
-                              <use xlink:href="#money-box-1"> </use>
-                            </svg>
-                            <div>
-                              <h6 class="text-uppercase">Earn points</h6>
-                              <p class="mb-0 text-muted text-sm">And get great rewards</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 d-flex">
-                          <div class="megamenu-services-item">
-                            <svg class="svg-icon megamenu-services-icon">
-                              <use xlink:href="#customer-support-1"> </use>
-                            </svg>
-                            <div>
-                              <h6 class="text-uppercase">020-800-456-747</h6>
-                              <p class="mb-0 text-muted text-sm">24/7 Available Support</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 d-flex">
-                          <div class="megamenu-services-item">
-                            <svg class="svg-icon megamenu-services-icon">
-                              <use xlink:href="#secure-payment-1"> </use>
-                            </svg>
-                            <div>
-                              <h6 class="text-uppercase">Secure Payment</h6>
-                              <p class="mb-0 text-muted text-sm">Secure Payment</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-3 d-none d-lg-block"><img class="bg-image" src="resources/myLib/img/photo/photo-1521170665346-3f21e2291d8b.jpg" alt=""></div>
-                  </div>
-                </div>
-              <!-- /Megamenu end-->
               <c:if test="${loginID==null}">
               <li class="nav-item"><a class="nav-link" href="loginf">로그인</a></li>
               <li class="nav-item"><a class="nav-link" href="joinf">회원가입</a></li>
@@ -247,7 +107,7 @@ margin:10px;
               </c:if>
               <c:if test="${loginID!=null && loginID=='admin'}">
                   <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="ninsertf">글쓰기</a></li>
-                </c:if>
+              </c:if>
               <c:if test="${loginID==null || loginID!=null && loginID!='admin'}">  
                   <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"></li>
               </c:if>
@@ -260,7 +120,6 @@ margin:10px;
     </header>
     <!-- Hero Section-->
     <section class="hero py-6 py-lg-7 text-white dark-overlay"><img class="bg-image" src="resources/myLib/img/noticeboard.jpg" alt="????" >
-
     </section>
     <section class="py-6">
       <div class="container">
