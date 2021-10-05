@@ -98,8 +98,6 @@ function setClock() {
 	             	<a class="dropdown-item" href="rlist">후기</a>
     	         	<a class="dropdown-item" href="nlist">공지</a>
     	         	<a class="dropdown-item" href="qlist">QnA</a>
-             <div class="dropdown-divider"></div>
-             <h6 class="dropdown-header fw-normal">Components</h6><a class="dropdown-item" href="resources/docs/components-bootstrap.html">Bootstrap </a><a class="dropdown-item" href="docs/components-directory.html">Theme </a>
            </div>
            
          </li>

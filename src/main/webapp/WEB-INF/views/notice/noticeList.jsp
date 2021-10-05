@@ -165,7 +165,7 @@ margin:10px;
 	<!-- 2) sPageNo ~ ePageNo 까지, displayPageNo 만큼 표시 -->
 	<c:forEach var="i" begin="${pageMaker.spageNo}" end="${pageMaker.epageNo}">
 		<c:if test="${i==pageMaker.cri.currPage}">
-			<font size="5" color="Orange">${i}</font>&nbsp;
+			<font size="5" color="MediumSlateBlue ">${i}</font>&nbsp;
 		</c:if>
 		<c:if test="${i!=pageMaker.cri.currPage}">
 			<a href="nlist${pageMaker.searchQuery(i)}">${i}</a>&nbsp;

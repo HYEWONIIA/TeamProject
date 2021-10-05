@@ -168,14 +168,14 @@ margin:10px;
 	
 		 1)  First << ,  Prev <  처리 -->
 	<c:if test="${pageMaker.prev && pageMaker.spageNo>1}">
-		<a href="rlist${pageMaker.searchQuery(1)}">FF</a>&nbsp;
-		<a href="rlist${pageMaker.searchQuery(pageMaker.spageNo-1)}">Prev</a>
+		<a href="rlist${pageMaker.searchQuery(1)}">&lt;&lt;</a>&nbsp;
+		<a href="rlist${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>
 	</c:if>
 	
 	<!-- 2) sPageNo ~ ePageNo 까지, displayPageNo 만큼 표시 -->
 	<c:forEach var="i" begin="${pageMaker.spageNo}" end="${pageMaker.epageNo}">
 		<c:if test="${i==pageMaker.cri.currPage}">
-			<font size="5" color="Orange">${i}</font>&nbsp;
+			<font size="5" color="MediumSlateBlue ">${i}</font>&nbsp;
 		</c:if>
 		<c:if test="${i!=pageMaker.cri.currPage}">
 			<a href="rlist${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
@@ -184,8 +184,8 @@ margin:10px;
 	&nbsp;
 	<!-- 3) Next >  ,  Last >>  처리 -->
 	<c:if test="${pageMaker.next && pageMaker.epageNo>0}">
-		<a href="rlist${pageMaker.searchQuery(pageMaker.epageNo+1)}">Next</a>&nbsp;
-		<a href="rlist${pageMaker.searchQuery(pageMaker.lastPageNo)}">LL</a>&nbsp;&nbsp;
+		<a href="rlist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&gt;</a>&nbsp;
+		<a href="rlist${pageMaker.searchQuery(pageMaker.lastPageNo)}">&gt;&gt;</a>&nbsp;&nbsp;
 	</c:if>
 </div>     
                     </div>
