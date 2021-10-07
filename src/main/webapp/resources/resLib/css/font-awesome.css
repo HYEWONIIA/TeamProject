@@ -2335,3 +2335,10 @@
   overflow: visible;
   clip: auto;
 }
+
+.bigtext {
+   text-align: left;
+   margin-bottom: 10px;
+   font-size: 1.25em;
+   font-weight: bold;
+}

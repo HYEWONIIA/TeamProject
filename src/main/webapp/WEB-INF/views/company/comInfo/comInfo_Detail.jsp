@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>업체상세정보</title>
+<title>내정보보기_사업자</title>
 <link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
 <!-- <link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css" > -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -46,7 +46,7 @@
 
 </head>
  <body style="padding-top: 72px;">
-     <c:if test="${message != null}">
+<c:if test="${message != null}">
 	<script>
 		alert("${message}");
  	</script>	
@@ -137,7 +137,7 @@
             <p><i class="fa-map-marker-alt fas me-2"></i>${Apple.caddr}</p>
           </div>
            <!-- 리뷰남길수 있는 링크와 연결 -->
-          <div class="calltoactions"><a class="btn btn-primary" href="#leaveReview" onclick="$('#leaveReview').collapse('show')" data-smooth-scroll>Leave a Review</a></div>
+          <div class="calltoactions"><a class="btn btn-primary" href="cinfo_cinfo">내 정보 수정 하기</a></div>
         </div>
       </div>
     </section>

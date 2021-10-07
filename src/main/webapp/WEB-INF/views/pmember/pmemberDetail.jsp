@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Personal info</title>
+    <title>개인정보</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
@@ -30,95 +30,14 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script src="resources/myLib/inCheck.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-
-/* function updateCh() {
+function updateCh() {
 	alert('회원정보가 정상적으로 수정되었습니다.');
-} */
-
-//1) 전역변수 정의
-var iCheck = false;
-var pCheck = false;
-var cCheck = false;
-var nCheck = false;
-var bCheck = false;
-var tCheck = false;
-var eCheck = false;
-var aCheck = false;
-
-//2) 개별컬럼의 무결성 점검
-$ (function (){
-	$('#id').focus();
+} 
 	
-	$('#id').focusout(function() {
-		iCheck=idCheck();
-	}); //id_focusout 
-	
-	$('#pw').focusout(function() {
-		pCheck=pwCheck();
-	}); //pw_focusout
-	
-	$('#checkpw').focusout(function() {
-		cCheck=cpCheck();
-	}); //checkpw_focusout
-	
-	$('#name').focusout(function() {
-		nCheck=nmCheck();
-	}); //name_focusout
-	
-	$('#birth').focusout(function() {
-		bCheck=bdCheck();
-	}); //birth_focusout
-	
-	$('#tel').focusout(function() {
-		tCheck=telCheck();
-	}); //tel_focusout
-	
-	$('#email').focusout(function() {
-		eCheck=emCheck();
-	}); //email_focusout
-	
-	$('#addr').focusout(function() {
-		aCheck=adCheck();
-	}); //addr_focusout
-
-}); //ready
-
-function inCheck() {
-	
-	if(iCheck==false) {
-		$('#iMessage').html(' 아이디를 입력하세요.');
-	}
-	if(pCheck==false) {
-		$('#pMessage').html(' 비밀번호를 입력하세요.');
-	}
-	if(cCheck==false) {
-		$('#cMessage').html(' 비밀번호 확인을 입력하세요.');
-	}
-	if(nCheck==false) {
-		$('#nMessage').html(' 이름을 입력하세요.');
-	}
-	if(bCheck==false) {
-		$('#bMessage').html(' 생년월일을 입력하세요.');
-	}
-	if(tCheck==false) {
-		$('#tMessage').html(' 전화번호를 입력하세요.');
-	}
-	if(eCheck==false) {
-		$('#emMessage').html(' 이메일을 입력하세요.');
-	}
-	if (iCheck && pCheck && cCheck && nCheck && bCheck && tCheck && eCheck) {
-		alert('회원가입 되었습니다. \n로그인 후 이용하세요 :-)');
-		return true;
-	} else 
-		return false;
-} //inCheck
-	
-}
 function addHypen(obj) {
     var number = obj.value.replace(/[^0-9]/g, "");
     var phone = "";
@@ -149,85 +68,95 @@ function addHypen(obj) {
 </head>
 <body style="padding-top: 72px;">
     <header class="header">
-       <!-- Navbar-->
-      <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
-        <div class="container-fluid">
-          <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="home"><img src="resources/img/logo.svg" alt="Directory logo"></a>
-            <form class="form-inline d-none d-sm-flex" action="#" id="search">
-              <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3"> 
-                <label class="label-absolute" for="search_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
-                <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="search_search" placeholder="Search" aria-label="Search" type="search">
-              </div>
-            </form>
-          </div>
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-          <!-- Navbar Collapse -->
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <form class="form-inline mt-4 mb-2 d-sm-none" action="#" id="searchcollapsed">
-              <div class="input-label-absolute input-label-absolute-left w-100">
-                <label class="label-absolute" for="searchcollapsed_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
-                <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="searchcollapsed_search" placeholder="Search" aria-label="Search" type="search">
-              </div>
-            </form>
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="docsDropdownMenuLink" href="home" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   RESERVATION</a>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink">
-                  <h6 class="dropdown-header fw-normal">Documentation</h6><a class="dropdown-item" href="docs/docs-introduction.html">Introduction </a><a class="dropdown-item" href="docs/docs-directory-structure.html">Directory structure </a><a class="dropdown-item" href="docs/docs-gulp.html">Gulp </a><a class="dropdown-item" href="docs/docs-customizing-css.html">Customizing CSS </a><a class="dropdown-item" href="docs/docs-credits.html">Credits </a><a class="dropdown-item" href="docs/docs-changelog.html">Changelog </a>
-                  <div class="dropdown-divider"></div>
-                  <h6 class="dropdown-header fw-normal">Components</h6><a class="dropdown-item" href="docs/components-bootstrap.html">Bootstrap </a><a class="dropdown-item" href="docs/components-directory.html">Theme </a>
-                </div>
-              </li>
+ <!-- Navbar-->
+ <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
+   <div class="container-fluid">
+     <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="home">  
+     <img src="resources/image/logo.svg" alt="Logo"></a></div>
+               
+     <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+     <!-- Navbar Collapse -->
+     <div class="collapse navbar-collapse" id="navbarCollapse">
+       <ul class="navbar-nav ms-auto">
+         <li class="nav-item"><a class="nav-link active" id="home" href="home">Home</a>
+         </li>
+       	 <li class="nav-item"><a class="nav-link" href="ccontent_main">문화공간 정보보기</a></li>
+       	 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              게시판메뉴</a>
+           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink">
+             <h6 class="dropdown-header fw-normal">게시판</h6>
+	             	<a class="dropdown-item" href="rlist">후기</a>
+    	         	<a class="dropdown-item" href="nlist">공지</a>
+    	         	<a class="dropdown-item" href="qlist">QnA</a>
+           </div>
+         </li>
+         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              회원메뉴</a>
+          <!-- 고객별 메뉴 01: 사업자회원/일반회원 둘다 로그인 안했을경우에 보이는 화면  -->
+           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink">
+             	<c:if test="${loginCno==null && loginID==null}">
+             		<h6 class="dropdown-header fw-normal">로그인 후 이용 가능합니다.</h6>
+	             	<a class="dropdown-item" href="cloginf">사업자회원 로그인</a>
+    	         	<a class="dropdown-item" href="loginf">일반회원 로그인</a>
+    	         </c:if>
+    	   <!-- 고객별 메뉴 02: 사업자회원 로그인/ 일반회원 로그인 안했을경우 -> 사업자만 로그인 --> 
+    	         <c:if test="${loginCno!=null && loginID==null}">
+    	         <h6 class="dropdown-header fw-normal">사업자회원 메뉴</h6>
+    	         	<a class="dropdown-item" href="cinfo_main">마이페이지</a>&nbsp;&nbsp;
+	   	         	<a class="dropdown-item" href="cinfo_detail">내정보보기</a>&nbsp;&nbsp;
+					<a class="dropdown-item" href="cinfo_cinfo">내정보수정</a>&nbsp;&nbsp;
+				 </c:if>
+		   <!-- 고객별 메뉴 03: 사업자회원 로그인 안 했을경우/ 일반회원 로그인 -> 일반회원만 로그인 --> 
+    	         <c:if test="${loginCno==null && loginID!=null}">
+    	         <h6 class="dropdown-header fw-normal">회원 메뉴</h6>
+    	        	<a class="dropdown-item" href="paccountf">마이페이지</a>&nbsp;&nbsp;
+	   	         	<a class="dropdown-item" href="pdetail">내정보보기</a>&nbsp;&nbsp;
+				 </c:if>
+           </div>
+         </li>
+         <!-- 관리자일때만 메뉴확인가능 -->
+		 <c:if test="${loginID == 'admin'}">
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="homeDropdownMenuLink" href="home" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   COMMUNITY</a>
-               	<div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item" href="aboard">Notice</a><a class="dropdown-item" href="aboard">Q&A</a><a class="dropdown-item" href="aboard">Review <span class="badge badge-info-light ms-1 mt-n1">New</span></a></div>
-              </li>
-			  <!-- 관리자일때만 메뉴확인가능 -->
-			  <c:if test="${loginID == 'admin'}">
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="homeDropdownMenuLink" href="home" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   LIST</a>
+                   회원목록</a>
                 <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item" href="pcplist">일반회원 목록</a><a class="dropdown-item" href="comlist">사업자회원 목록</a><div class="dropdown-divider"></div><a class="dropdown-item" href="#">예약관리</a></div>
               </li>
-              </c:if>
-			   <!-- 로그인했을 시 메뉴확인가능 -->
-			 <c:if test="${loginID!=null || loginCno!=null}">
-				<li class="nav-item"><a class="nav-link" href="paccountf">MYPAGE</a></li>
+         </c:if>
+		 <!-- 로그인 전용 사용가능 메뉴 -->
+		 <c:if test="${loginID!=null || loginCno!=null}">
 	 			<li class="nav-item"><a class="nav-link" href="logout">LOGOUT</a></li>
-             </c:if>
-              <!-- 로그인 안 했을 시-->
-             <c:if test="${loginID==null && loginCno==null}">
-              	<li class="nav-item"><a class="nav-link" href="loginf">LOGIN</a></li>
-              	<li class="nav-item"><a class="nav-link" href="joinf">JOIN</a></li>
-             </c:if>
-              <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="user-add-0.html">Add a listing</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!-- /Navbar -->
+         </c:if>
+         <!-- 비로그인 사용가능 메뉴-->
+         <c:if test="${loginCno==null && loginID==null}">
+	       		<li class="nav-item"><a class="nav-link" href="loginf_total">로그인</a></li>
+	       		<li class="nav-item"><a class="nav-link" href="joinf_total">회원가입</a></li>
+	     </c:if>
+       </ul>
+     </div>
+   </div>
+ </nav>
     </header>
     <section class="py-5">
       <div class="container">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0  justify-content-start">
-          <li class="breadcrumb-item"><a href="home">Home</a></li>
-          <li class="breadcrumb-item"><a href="paccountf">Account</a></li>
-          <li class="breadcrumb-item active">Personal info   </li>
+          <li class="breadcrumb-item"><a href="home">홈</a></li>
+          <li class="breadcrumb-item"><a href="paccountf">계정</a></li>
+          <li class="breadcrumb-item active">개인정보</li>
         </ol>
-        <h1 class="hero-heading mb-0">Personal info</h1>
-        <p class="text-muted mb-5">Manage your Personal info and settings here.</p>
+        <h1 class="hero-heading mb-0">개인정보</h1>
+      	<br>
         <div class="row">
           <div class="col-lg-7 mb-5 mb-lg-0">
             <div class="text-block"> 
               <div class="row mb-3">
                 <div class="col-sm-9">
-                  <h5>Personal Details</h5>
+                  <h6>update 버튼을 눌러 정보를 수정하세요.</h6>
                 </div>
                 <div class="col-sm-3 text-end">
                   <button class="btn btn-link ps-0 text-primary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#personalDetails" aria-expanded="false" aria-controls="personalDetails">Update</button>
                 </div>
               </div>
-              <p class="text-sm text-muted"><i class="fa fa-id-card fa-fw me-2"></i>${Apple.name} (${Apple.id})<br><i class="fa fa-birthday-cake fa-fw me-2"></i>${Apple.birth}<br><i class="fa fa-envelope-open fa-fw me-2"></i>${Apple.email}  <span class="mx-2"> | </span>  <i class="fa fa-phone fa-fw me-2"></i>${Apple.tel}<br><i class="fa fa-address-book fa-fw flex-shrink-0 me-2"></i>(${Apple.postcode}) ${Apple.addr}, ${Apple.detailAddr}</p>
+              <p class="text-sm text-muted"><i class="fa fa-id-card fa-fw me-2"></i>${Apple.name} (${Apple.id})<br><i class="fa fa-birthday-cake fa-fw me-2"></i>${Apple.birth}<br><i class="fa fa-envelope-open fa-fw me-2"></i>${Apple.email}  <span class="mx-2"> | </span>  <i class="fa fa-phone fa-fw me-2"></i>${Apple.tel}<br><i class="fa fa-address-book fa-fw flex-shrink-0 me-2"></i>${Apple.postcode} ${Apple.addr} ${Apple.detailAddr}</p>
               <div class="collapse" id="personalDetails">
                 <form action="pupdate" method="post">
                   <div class="row pt-4">
@@ -238,14 +167,17 @@ function addHypen(obj) {
                    <div class="mb-4 col-md-6">
                       <label class="form-label" for="pw">비밀번호</label>
                       <input class="form-control" type="password" name="pw" id="pw" value="${Apple.pw}" required>
+                      <span id="pMessage" class="eMessage form-label text-danger"></span>
                     </div>  
                     <div class="mb-4 col-md-6">
                       <label class="form-label" for="name">이름</label>
                       <input class="form-control" type="text" name="name" id="name" value="${Apple.name}" required>
+                      <span id="nMessage" class="eMessage form-label text-danger"></span>
                     </div>                               
                     <div class="mb-4 col-md-6">
                       <label class="form-label" for="birth">생년월일</label>
                       <input class="form-control" type="date" name="birth" id="birth" value="${Apple.birth}" required>
+                      <span id="bMessage" class="eMessage form-label text-danger"></span>
                     </div>
                     <div class="mb-4 col-md-6">
                       <label class="form-label" for="email">이메일</label>
@@ -255,10 +187,11 @@ function addHypen(obj) {
                     <div class="mb-4 col-md-6">
                       <label class="form-label" for="tel">연락처</label>
                       <input class="form-control" type="tel" name="tel" id="tel" value="${Apple.tel}" onKeyup = "addHypen(this)" maxlength="13" placeholder="하이픈(-) 없이 입력하세요." required>
+                      <span id="tMessage" class="eMessage form-label text-danger"></span>
                     </div>
                     <div class="mb-4 col-md-12">
                       <label class="form-label" for="addr">주소</label>
-                      <input class="form-control" type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br> 
+                      <input class="form-control btn-outline-primary" type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
 					  <input class="form-control" name="postcode" id="postcode" type="text" placeholder="우편번호" size="10" value="${Apple.postcode}">
 					  <input class="form-control" name="addr" id="addr" type="text" placeholder="주소" size="45" value="${Apple.addr}">
 					  <input class="form-control" name="detailAddr" id="detailAddr" type="text" placeholder="상세주소" value="${Apple.detailAddr}">
@@ -311,8 +244,8 @@ function addHypen(obj) {
    		 }
 	</script>
                     </div>
-                  </div>
-                  <button class="btn btn-outline-primary mb-4" type="submit" onclick="return inCheck()">정보 수정</button>
+                  </div><br>
+                  <button class="btn btn-lg btn-primary col-12" type="submit" onclick="return updateCh()">정보 수정</button>
                 </form>
               </div>
             </div>
@@ -387,28 +320,6 @@ function addHypen(obj) {
         </div>
       </div>
     </footer>
-    <button class="btn btn-primary btn-sm d-none d-lg-block" type="button" data-bs-toggle="collapse" data-bs-target="#style-switch" id="style-switch-button">
-      <svg class="svg-icon svg-icon-md">
-        <use xlink:href="#configuration-1"> </use>
-      </svg>
-    </button>
-    <div class="collapse" id="style-switch">
-      <div class="p-4">
-        <h6 class="text-uppercase mb-4">Select theme colour</h6>
-        <form class="mb-3">
-          <select class="form-select style-switch-select" name="colour" id="colour">
-            <option value="">select colour variant</option>
-            <option value="resources/css/style.default.222cad84.css">blue</option>
-            <option value="resources/css/style.pink.8e944c0e.css">pink</option>
-            <option value="resources/css/style.green.dbb19695.css">green</option>
-            <option value="resources/css/style.red.25441cbe.css">red</option>
-            <option value="resources/css/style.violet.46bbf1a3.css">violet</option>
-            <option value="resources/css/style.sea.e2d18689.css">sea</option>
-          </select>
-        </form>
-        <p class="text-muted text-xs mb-0">Stylesheet switching in this demo is done with JavaScript and can cause a blink while page loads. This will not happen in your production code.</p>
-      </div>
-    </div>
     <!-- JavaScript files-->
     <script>
       // ------------------------------------------------------- //

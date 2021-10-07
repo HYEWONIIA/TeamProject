@@ -47,17 +47,56 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="ccontent_main">문화공간 정보보기</a></li>
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="homeDropdownMenuLink" href="index.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    게시판메뉴</a>
-                <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item" href="rlist">후기</a><a class="dropdown-item" href="nlist">공지</a><a class="dropdown-item" href="qlist">QnA</a></div>
+                <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
+                 <h6 class="dropdown-header fw-normal">게시판</h6> 
+                   <a class="dropdown-item" href="rlist">후기</a>
+                   <a class="dropdown-item" href="nlist">공지</a>
+                   <a class="dropdown-item" href="qlist">QnA</a>
+                </div>
               </li>
-              <c:if test="${loginID==null}">
-              <li class="nav-item"><a class="nav-link" href="loginf">로그인</a></li>
-              <li class="nav-item"><a class="nav-link" href="joinf">회원가입</a></li>
-              </c:if>
-              <c:if test="${loginID!=null}">
-              <li class="nav-item"><a class="nav-link" href="logout">로그아웃</a></li>
-              </c:if>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="homeDropdownMenuLink" href="index.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   회원메뉴</a>
+              <!-- 고객별 메뉴 01: 사업자회원/일반회원 둘다 로그인 안했을경우에 보이는 화면  -->
+               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="homeDropdownMenuLink">
+             	    <c:if test="${loginCno==null && loginID==null}">
+             		    <h6 class="dropdown-header fw-normal">로그인 후 이용 가능합니다.</h6>
+	              	    <a class="dropdown-item" href="cloginf">사업자회원 로그인</a>
+    	         	    <a class="dropdown-item" href="loginf">일반회원 로그인</a>
+    	             </c:if>
+    	       <!-- 고객별 메뉴 02: 사업자회원 로그인/ 일반회원 로그인 안했을경우 -> 사업자만 로그인 --> 
+    	             <c:if test="${loginCno!=null && loginID==null}">
+    	             <h6 class="dropdown-header fw-normal">사업자회원 메뉴</h6>
+    	            	<a class="dropdown-item" href="cinfo_main">마이페이지</a>&nbsp;&nbsp;
+	   	         	    <a class="dropdown-item" href="cinfo_detail">내정보보기</a>&nbsp;&nbsp;
+					    <a class="dropdown-item" href="cinfo_cinfo">내정보수정</a>&nbsp;&nbsp;
+				     </c:if>
+		       <!-- 고객별 메뉴 03: 사업자회원 로그인 안 했을경우/ 일반회원 로그인 -> 일반회원만 로그인 --> 
+    	             <c:if test="${loginCno==null && loginID!=null}">
+    	             <h6 class="dropdown-header fw-normal">회원 메뉴</h6>
+    	            	<a class="dropdown-item" href="paccountf">마이페이지</a>&nbsp;&nbsp;
+	   	            	<a class="dropdown-item" href="pdetail">내정보보기</a>&nbsp;&nbsp;
+				     </c:if>
+               </div>
+             </li>
+             <!-- 관리자일때만 메뉴확인가능 -->
+		     <c:if test="${loginID == 'admin'}">
+                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="homeDropdownMenuLink" href="home" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       회원목록</a>
+                    <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item" href="pcplist">일반회원 목록</a><a class="dropdown-item" href="comlist">사업자회원 목록</a><div class="dropdown-divider"></div><a class="dropdown-item" href="#">예약관리</a></div>
+                  </li>
+             </c:if>
+		     <!-- 로그인 전용 사용가능 메뉴 -->
+		     <c:if test="${loginID!=null || loginCno!=null}">
+	 	    		<li class="nav-item"><a class="nav-link" href="logout">LOGOUT</a></li>
+             </c:if>
+             <!-- 비로그인 사용가능 메뉴-->
+             <c:if test="${loginCno==null && loginID==null}">
+	         		<li class="nav-item"><a class="nav-link" href="loginf_total">로그인</a></li>
+	        		<li class="nav-item"><a class="nav-link" href="joinf_total">회원가입</a></li>
+	         </c:if>
               <c:if test="${loginID!=null && loginID=='admin'}">
                   <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="ninsertf">글쓰기</a></li>
                 </c:if>

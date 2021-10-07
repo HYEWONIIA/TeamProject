@@ -62,7 +62,14 @@ public class HomeController {
 	// ** 통합회원 회원가입	
 	@RequestMapping(value = "/joinf_total")
 	public ModelAndView joinf_total(ModelAndView mv) {
-		mv.setViewName("company/joinForm_total");
+		mv.setViewName("total/joinForm_total");
 		return mv;
-	} //Board
+	} //joinf_total
+	
+	@RequestMapping(value = "/loginf_total")
+	public ModelAndView loginf_total(ModelAndView mv) {
+		mv.setViewName("total/loginForm_total");
+		return mv;
+	} //loginf_total
+	
 }//class

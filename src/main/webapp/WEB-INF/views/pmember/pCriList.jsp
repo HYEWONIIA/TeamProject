@@ -31,8 +31,8 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
+<script src="resources/myLib/axDelete.js"></script>
 <script>
 $(function() {
 	// SearchType이 '----'면 keyword 클리어
@@ -54,81 +54,82 @@ $(function() {
 </head>
 <body style="padding-top: 72px;">
  <header class="header">
-         <!-- Navbar-->
-      <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
-        <div class="container-fluid">
-          <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="home"><img src="resources/img/logo.svg" alt="Directory logo"></a>
-            <form class="form-inline d-none d-sm-flex" action="#" id="search">
-              <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3"> 
-                <label class="label-absolute" for="search_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
-                <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="search_search" placeholder="Search" aria-label="Search" type="search">
-              </div>
-            </form>
-          </div>
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-          <!-- Navbar Collapse -->
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <form class="form-inline mt-4 mb-2 d-sm-none" action="#" id="searchcollapsed">
-              <div class="input-label-absolute input-label-absolute-left w-100">
-                <label class="label-absolute" for="searchcollapsed_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
-                <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="searchcollapsed_search" placeholder="Search" aria-label="Search" type="search">
-              </div>
-            </form>
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="docsDropdownMenuLink" href="home" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   RESERVATION</a>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink">
-                  <h6 class="dropdown-header fw-normal">Documentation</h6><a class="dropdown-item" href="docs/docs-introduction.html">Introduction </a><a class="dropdown-item" href="docs/docs-directory-structure.html">Directory structure </a><a class="dropdown-item" href="docs/docs-gulp.html">Gulp </a><a class="dropdown-item" href="docs/docs-customizing-css.html">Customizing CSS </a><a class="dropdown-item" href="docs/docs-credits.html">Credits </a><a class="dropdown-item" href="docs/docs-changelog.html">Changelog </a>
-                  <div class="dropdown-divider"></div>
-                  <h6 class="dropdown-header fw-normal">Components</h6><a class="dropdown-item" href="docs/components-bootstrap.html">Bootstrap </a><a class="dropdown-item" href="docs/components-directory.html">Theme </a>
-                </div>
-              </li>
+ <!-- Navbar-->
+ <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
+   <div class="container-fluid">
+     <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="home">  
+     <img src="resources/image/logo.svg" alt="Logo"></a></div>
+               
+     <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+     <!-- Navbar Collapse -->
+     <div class="collapse navbar-collapse" id="navbarCollapse">
+       <ul class="navbar-nav ms-auto">
+         <li class="nav-item"><a class="nav-link active" id="home" href="home">Home</a>
+         </li>
+       	 <li class="nav-item"><a class="nav-link" href="ccontent_main">문화공간 정보보기</a></li>
+       	 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              게시판메뉴</a>
+           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink">
+             <h6 class="dropdown-header fw-normal">게시판</h6>
+	             	<a class="dropdown-item" href="rlist">후기</a>
+    	         	<a class="dropdown-item" href="nlist">공지</a>
+    	         	<a class="dropdown-item" href="qlist">QnA</a>
+           </div>
+         </li>
+         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              회원메뉴</a>
+          <!-- 고객별 메뉴 01: 사업자회원/일반회원 둘다 로그인 안했을경우에 보이는 화면  -->
+           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink">
+             	<c:if test="${loginCno==null && loginID==null}">
+             		<h6 class="dropdown-header fw-normal">로그인 후 이용 가능합니다.</h6>
+	             	<a class="dropdown-item" href="cloginf">사업자회원 로그인</a>
+    	         	<a class="dropdown-item" href="loginf">일반회원 로그인</a>
+    	         </c:if>
+    	   <!-- 고객별 메뉴 02: 사업자회원 로그인/ 일반회원 로그인 안했을경우 -> 사업자만 로그인 --> 
+    	         <c:if test="${loginCno!=null && loginID==null}">
+    	         <h6 class="dropdown-header fw-normal">사업자회원 메뉴</h6>
+    	         	<a class="dropdown-item" href="cinfo_main">마이페이지</a>&nbsp;&nbsp;
+	   	         	<a class="dropdown-item" href="cinfo_detail">내정보보기</a>&nbsp;&nbsp;
+					<a class="dropdown-item" href="cinfo_cinfo">내정보수정</a>&nbsp;&nbsp;
+				 </c:if>
+		   <!-- 고객별 메뉴 03: 사업자회원 로그인 안 했을경우/ 일반회원 로그인 -> 일반회원만 로그인 --> 
+    	         <c:if test="${loginCno==null && loginID!=null}">
+    	         <h6 class="dropdown-header fw-normal">회원 메뉴</h6>
+    	        	<a class="dropdown-item" href="paccountf">마이페이지</a>&nbsp;&nbsp;
+	   	         	<a class="dropdown-item" href="pdetail">내정보보기</a>&nbsp;&nbsp;
+				 </c:if>
+           </div>
+         </li>
+         <!-- 관리자일때만 메뉴확인가능 -->
+		 <c:if test="${loginID == 'admin'}">
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="homeDropdownMenuLink" href="home" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   COMMUNITY</a>
-               	<div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item" href="aboard">Notice</a><a class="dropdown-item" href="aboard">Q&A</a><a class="dropdown-item" href="aboard">Review <span class="badge badge-info-light ms-1 mt-n1">New</span></a></div>
-              </li>
-			  <!-- 관리자일때만 메뉴확인가능 -->
-			  <c:if test="${loginID == 'admin'}">
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="homeDropdownMenuLink" href="home" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   LIST</a>
+                   회원목록</a>
                 <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item" href="pcplist">일반회원 목록</a><a class="dropdown-item" href="comlist">사업자회원 목록</a><div class="dropdown-divider"></div><a class="dropdown-item" href="#">예약관리</a></div>
               </li>
-              </c:if>
-			   <!-- 로그인했을 시 메뉴확인가능 -->
-			 <c:if test="${loginID!=null || loginCno!=null}">
-				<li class="nav-item"><a class="nav-link" href="paccountf">MYPAGE</a></li>
+         </c:if>
+		 <!-- 로그인 전용 사용가능 메뉴 -->
+		 <c:if test="${loginID!=null || loginCno!=null}">
 	 			<li class="nav-item"><a class="nav-link" href="logout">LOGOUT</a></li>
-             </c:if>
-              <!-- 로그인 안 했을 시-->
-             <c:if test="${loginID==null && loginCno==null}">
-              	<li class="nav-item"><a class="nav-link" href="loginf">LOGIN</a></li>
-              	<li class="nav-item"><a class="nav-link" href="joinf">JOIN</a></li>
-             </c:if>
-              <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="user-add-0.html">Add a listing</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!-- /Navbar -->
-<ul class="nav nav-tabs ">
-  <li class="nav-item">
-    <a class="nav-link active" href="loginf">일반회원</a>
-  </li>
-   <li class="nav-item">
-    <a class="nav-link" href="cchecklist">사업자회원</a>
-  </li>
-</ul>
+         </c:if>
+         <!-- 비로그인 사용가능 메뉴-->
+         <c:if test="${loginCno==null && loginID==null}">
+	       		<li class="nav-item"><a class="nav-link" href="loginf_total">로그인</a></li>
+	       		<li class="nav-item"><a class="nav-link" href="joinf_total">회원가입</a></li>
+	     </c:if>
+       </ul>
+     </div>
+   </div>
+ </nav>
     </header>
     <section class="py-5">
       <div class="container">
        <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0  justify-content-start">
-          <li class="breadcrumb-item"><a href="home">Home</a></li>
-          <li class="breadcrumb-item"><a href="paccountf">Account</a></li>
-          <li class="breadcrumb-item active">MemberList</li>
+          <li class="breadcrumb-item"><a href="home">홈</a></li>
+          <li class="breadcrumb-item active">회원목록</li>
         </ol>
         <div class="d-flex justify-content-between align-items-center mb-5">
-          <h1 class="hero-heading mb-0">회원목록 관리</h1>
+          <h1 class="hero-heading mb-0">일반회원 관리</h1>
         </div> 
          <div class="d-flex justify-content-between align-items-end mb-4">        
 		<div id="searchBar" style="display: inline-block; margin: 0 5px; float: right;"><form class="d-flex">  
@@ -148,11 +149,11 @@ $(function() {
 	<tr height="35" align="center" bgcolor="Beige">
 		<th>ID</th><th>Name</th><th>Birth</th><th>Tel</th><th>Email</th><th>Addr</th><th>Delete</th>
 	</tr>
-	<c:forEach var="list" items="${Banana}">
+	<c:forEach var="list" items="${Banana}" varStatus="vs">
 		<tr height="30" align="center">
 			<td><a href="pdetail?id=${list.id}">${list.id}</a></td>
 			<td>${list.name}</td><td>${list.birth}</td>
-			<td>${list.tel}</td><td>${list.email}</td><td>${list.addr}</td><td><button type="button" class="btn btn-outline-dark" onclick="location.href='adelete?id=${Apple.id}'">삭제</button></td>
+			<td>${list.tel}</td><td>${list.email}</td><td>${list.addr}</td><td><button id="${list.id}" type="button" class="ddd btn btn-outline-dark">삭제</button></td>
 		</tr>
 	</c:forEach>
 </table><br>
@@ -252,28 +253,6 @@ $(function() {
         </div>
       </div>
     </footer>
-    <button class="btn btn-primary btn-sm d-none d-lg-block" type="button" data-bs-toggle="collapse" data-bs-target="#style-switch" id="style-switch-button">
-      <svg class="svg-icon svg-icon-md">
-        <use xlink:href="#configuration-1"> </use>
-      </svg>
-    </button>
-    <div class="collapse" id="style-switch">
-      <div class="p-4">
-        <h6 class="text-uppercase mb-4">Select theme colour</h6>
-        <form class="mb-3">
-          <select class="form-select style-switch-select" name="colour" id="colour">
-            <option value="">select colour variant</option>
-            <option value="resources/css/style.default.222cad84.css">blue</option>
-            <option value="resources/css/style.pink.8e944c0e.css">pink</option>
-            <option value="resources/css/style.green.dbb19695.css">green</option>
-            <option value="resources/css/style.red.25441cbe.css">red</option>
-            <option value="resources/css/style.violet.46bbf1a3.css">violet</option>
-            <option value="resources/css/style.sea.e2d18689.css">sea</option>
-          </select>
-        </form>
-        <p class="text-muted text-xs mb-0">Stylesheet switching in this demo is done with JavaScript and can cause a blink while page loads. This will not happen in your production code.</p>
-      </div>
-    </div>
     <!-- JavaScript files-->
     <script>
       // ------------------------------------------------------- //

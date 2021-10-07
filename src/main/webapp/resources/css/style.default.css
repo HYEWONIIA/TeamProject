@@ -245,7 +245,7 @@ a {
 
 a:hover {
   color: #3e52c6;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
@@ -3608,7 +3608,7 @@ fieldset:disabled .btn {
 
 .btn-link:hover {
   color: #3e52c6;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .btn-link:focus {
@@ -7469,6 +7469,7 @@ fieldset:disabled .btn {
 
 .gap-2 {
   gap: 0.5rem !important;
+  margin-top: 16px;
 }
 
 .gap-3 {
