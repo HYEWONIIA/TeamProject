@@ -129,8 +129,10 @@
                     </div>
                     <div class="form-group">
                       <label class="form-label" for="brno">작성자 *</label>
-                      <input class="form-control" type="text" name="id" value="${loginID}" readonly >
+                      <input class="form-control" type="text" name="cname" value="${loginCname}" readonly >
+                      <input class="form-control" type="hidden" name="id" value="${loginCno}">
                     </div>
+                    
                     <div class="form-group">
                       <label class="form-label" for="brtitle">제목 *</label>
                       <input class="form-control" type="text" name="brtitle" id="brtitle" placeholder="Enter your title" required="required">

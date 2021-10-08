@@ -118,9 +118,11 @@
     <section class="py-6">
       <div class="container">
       <h2 class="h4 mb-5">Notice Form</h2>
+     <form class="form" id="rinsert-form" method="post" action="rinsert" enctype="multipart/form-data">
+      <input value="${cname}" name="cname" readonly>
+      <input value="${cno}" name="cno" type="hidden"><br>
         <div class="row">
            <div class="col-md-7 mb-5 mb-md-0">
-            <form class="form" id="rinsert-form" method="post" action="rinsert" enctype="multipart/form-data">
               <div class="controls">
                 <div class="row">
                   <div class="col-sm-6">
@@ -207,13 +209,13 @@
   		          </script>  
                 </div>
                 <div class="form-group">
-                  <%@ include file="star.html" required="required"%>
+                  <%@ include file="star.html" %>
                   <input type="hidden" name="brating" id="brating">
                 </div>
                 <input class="btn btn-outline-primary" type="submit" value="전송">
                 <input class="btn btn-outline-primary" type="reset" value="취소">
               </div>
-            </form>
+           </form>
           </div>
         </div>
       </div>

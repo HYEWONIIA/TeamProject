@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import criTest.Criteria;
 import criTest.SearchCriteria;
 import lombok.extern.log4j.Log4j;
+import vo.QnaVO;
 import vo.ReviewVO;
 
 @Log4j
@@ -61,6 +62,11 @@ public class ReviewDAO {
 	public int countUp(ReviewVO vo) {
 		return sqlSession.update(NS+"countUp",vo);
 	} //countUp
+	
+	// ** selectReply
+	public ReviewVO selectReply(ReviewVO vo) {
+		return sqlSession.selectOne(NS+"selectReply", vo);
+	} //selectReply
 		
 	// ** insert (원글)
 	public int insert(ReviewVO vo) {

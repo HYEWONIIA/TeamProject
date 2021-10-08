@@ -139,9 +139,11 @@
         <div class="row">
           <div class="col-xl-8 col-lg-10 mx-auto">                               
             <div class="text-content">
+            <c:if test="${Apple.bffile>''}">
             <figure class="figure mb-3">
               <img class="figure-img img-fluid w-100" src="${Apple.bffile}" style="align-items: center;">
             </figure> 
+            </c:if>
               <p class="lead mb-5 black" align="center" ><strong>${Apple.bfcontent}</strong></p>
             </div>
             <div class="col-xl-8 col-lg-10 mx-auto" align="center">           

@@ -43,7 +43,7 @@
 
 	<select id="searchList" resultType="vo.ReviewVO">
 	<![CDATA[
-		select brno,id,brtitle,brdate,brcnt,root,step,indent from 
+		select brno,id,brtitle,brdate,brcnt,root,step,indent,cno from 
 		(select r.* , ROW_NUMBER() OVER(order by root desc, step asc) rnum from review r
 		where  brno > 0 ]]>
 		<include refid="search"></include>
@@ -65,7 +65,7 @@
 			select nvl(max(brno),0)+1 from review
 		</selectKey>
 		insert into review values (
-		#{brno},#{id},0,#{brtitle},#{brcontent},0,0,SYSDATE,0,#{root},#{step},#{indent})
+		#{brno},#{id},0,#{brtitle},#{brcontent},0,0,SYSDATE,0,#{root},#{step},#{indent},#{cno})
 	</insert>	
 
 <!-- ** review List ~~~~~~~~~~~~~~~~~~~~~~-->
@@ -74,25 +74,30 @@
 	</select>
 	
 	<select id="pageList" resultType="vo.ReviewVO">
-		select brno,id,brtitle,brdate,brcnt,root,step,indent from 
+		select brno,id,brtitle,brdate,brcnt,root,step,indent,cno from 
 		(select r.* , ROW_NUMBER() OVER(order by root desc, step asc) rnum from review r) 
 		where rnum between #{sno} and #{eno}
 	</select>
 	
 	<select id="reviewList" resultType="vo.ReviewVO">
-		select brno,id,brtitle,brcontent,brfile,brdate,brcnt,root,step,indent from 
+		select brno,id,brtitle,brcontent,brfile,brdate,brcnt,root,step,indent,cno from 
 		(select r.* , ROW_NUMBER() OVER(order by root desc, step asc) rnum from review r) 
 		where rnum between #{sno} and #{eno}
 	</select>
 
 	<select id="selectList" resultType="vo.ReviewVO">
-		select brno,id,brtitle,brcontent,brfile,brdate,brcnt,root,step,indent from 
+		select brno,id,brtitle,brcontent,brfile,brdate,brcnt,root,step,indent,cno from 
 		review order by root desc, step asc
 	</select>
 	
 	<select id="selectOne" resultType="vo.ReviewVO">
 		select * from review where brno = #{brno}
 	</select>
+	
+	<select id="selectReply" resultType="vo.ReviewVO">
+		select * from review r where brno != #{root} and root = #{root}
+	</select>	
+	
 <!-- 원글 입력 
 ** selectKey Test         
 -->
@@ -101,8 +106,8 @@
 			select nvl(max(brno),0)+1 from review
 		</selectKey>
 		insert into review values ( 
-			#{brno},#{id},#{brcity},#{brtitle},#{brcontent},#{brfile},#{brating}<!-- ,#{brcno} -->,SYSDATE,0,
-			#{brno},0,0)
+			#{brno},#{id},#{brcity},#{brtitle},#{brcontent},#{brfile},#{brating},SYSDATE,0,
+			#{brno},0,0,#{cno})
 	</insert>
 	
 	<delete id="delete">

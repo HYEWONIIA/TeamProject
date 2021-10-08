@@ -192,11 +192,11 @@ margin:10px;
 		                    <c:if test="${loginID!=null || loginCno!=null}">
 			                  <a class="a"  href="rdetail?brno=${list.brno}&id=${list.id}">${list.brtitle}</a>
 		                    </c:if>
-		                    <c:if test="${loginID==null}">
+		                    <c:if test="${loginID==null && loginCno==null}">
 			                  ${list.brtitle}
 		                    </c:if>
-	                        </td>
-	                        <td align="center">${list.id}</td>
+	                        </td>	                        	                        
+	                        <td align="center">${list.id}</td>	                        
 	                        <td align="center">${list.brdate}</td>
 	                        <td align="center">${list.brcnt}</td>
                             </tr></c:forEach></table>

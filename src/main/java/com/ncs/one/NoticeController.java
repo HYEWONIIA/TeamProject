@@ -109,7 +109,7 @@ public class NoticeController {
 		// => 존재하지 않으면 디렉토리 생성
 		
 		// 기본 Image 지정
-		String file1, file2 = null;
+		String file1, file2 = "";
 
 		System.out.println("** Ajax Test vo => "+vo);
 		

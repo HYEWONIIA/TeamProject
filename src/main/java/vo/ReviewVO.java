@@ -14,11 +14,12 @@ public class ReviewVO {
 	private String brfile;
 	private MultipartFile uploadfilef;
 	private int brating;
-	//private int cno;
 	private String brdate;
 	private int brcnt;
 	private int root;
 	private int step;
 	private int indent;
+	private int cno;
+	private String cname;
 	
 } //class

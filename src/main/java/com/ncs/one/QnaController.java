@@ -77,7 +77,6 @@ public class QnaController {
 			// 글내용 조회
 			vo = service.selectOne(vo);
 			if (vo != null) {
-				// 답글 존재 확인 
 				
 				// 답글 서비스 selectone 
 				request.setAttribute("Apple", vo);

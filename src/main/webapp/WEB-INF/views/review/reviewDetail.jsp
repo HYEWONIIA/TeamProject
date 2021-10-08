@@ -97,13 +97,14 @@
 	         		<li class="nav-item"><a class="nav-link" href="loginf_total">로그인</a></li>
 	        		<li class="nav-item"><a class="nav-link" href="joinf_total">회원가입</a></li>
 	         </c:if>
-              <c:if test="${loginID!=null && loginID !='admin'}">
+	         
+              <c:if test="${(loginID!=null && loginID !='admin') || loginCno!=null}">
                   <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="rinsertf">글쓰기</a></li>
               </c:if>
-              <c:if test="${loginID=='admin'}">
-                  <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="replyf?brno=${Apple.brno}&root=${Apple.root}&step=${Apple.step}&brtitle=${Apple.brtitle}&indent=${Apple.indent}">답글등록</a></li>
+              <c:if test="${Apple2 == null && loginCno == Apple.cno}">
+                  <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="replyf?cno=${loginCno}&cname=${cname}&brno=${Apple.brno}&root=${Apple.root}&step=${Apple.step}&brtitle=${Apple.brtitle}&indent=${Apple.indent}">답글등록</a></li>
               </c:if>
-              <c:if test="${loginID==null }">  
+              <c:if test="${Apple2 != null || loginID==null }">  
                   <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"></li>
               </c:if>          
 		      </ul>
@@ -119,6 +120,7 @@
         <a href="rlist" class="breadcrumb text-white justify-content-center"><h1 class="hero-heading">Review</h1></a>
       </div>
     </section>
+    <section>
       <div class="container">
         <div class="row">
           <div class="col-xl-8 col-lg-10 mx-auto">           
@@ -133,12 +135,14 @@
         </div>
         <div class="row">
           <div class="col-xl-8 col-lg-10 mx-auto">  
-           <div>                          
+           <div>
+           <c:if test="${Apple.brfile >'' && Apple.step!=1}">                        
             <div class="text-content" style="float: left">
               <figure class="figure mb-3">
                  <img width="300px" height="280px" src="${Apple.brfile}" >
               </figure>
             </div>
+           </c:if>   
             <div style="float: left; width: 400px ; height: 280px">&nbsp;&nbsp;<p class="lead mb-5 black" ><strong>${Apple.brcontent}</strong></p>
             </div>
             </div>  
@@ -146,7 +150,20 @@
             <div class="col-xl-8 col-lg-10 mx-auto" align="center">
                <%@ include file="star02.html" %>
             </div> 
-            <br><br><br>
+            
+         <!-- comments--> 
+         <c:if test="${loginID!=null || loginCno!=null}">
+           <div class="mt-5">
+             <c:if test="${Apple2!=null}">
+              <h6 class="text-uppercase text-muted mb-4">comments</h6>
+              <!-- comment-->
+                <div class="media-body">
+                  <h5>답글</h5> <div align="left"><c:if test="${loginCno==Apple.cno}"><a href="rdelete?brno=${Apple2.brno}">[글삭제]</a></c:if></div> 
+                  <p class="text-uppercase text-sm text-muted"><a class="font-weight-bold" href="#">${Apple2.cname}</a><span class="mx-1">|</span><i class="far fa-clock"></i> ${Apple2.brdate}</p>
+                  <p class="text-muted">${Apple2.brcontent}</p>
+                </div>
+             </c:if> 
+                 <br><br><br>
             <div class="col-xl-8 col-lg-10 mx-auto" align="center">           
                 <c:if test="${loginID!=null}"> 	
                     <c:if test="${loginID == Apple.id || loginID == 'admin'}">
@@ -155,6 +172,8 @@
                 </c:if>  
                 <br><br><br>  
             </div>
+           </div> 
+         </c:if>
         </div>
       </div>
     </section>

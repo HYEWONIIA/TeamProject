@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import criTest.Criteria;
 import criTest.SearchCriteria;
 import util.ReviewDAO;
+import vo.QnaVO;
 import vo.ReviewVO;
 
 @Service
@@ -49,9 +50,15 @@ public class ReviewServiceImpl implements ReviewService{
 	} //replyInsert
 	
 	@Override
+	public ReviewVO selectReply(ReviewVO vo) {
+		return dao.selectReply(vo);
+	}
+	
+	@Override
 	public List<ReviewVO> selectList() {
 		return dao.selectList();
 	} //selectList
+	
 	@Override
 	public ReviewVO selectOne(ReviewVO vo) {
 		return dao.selectOne(vo);

@@ -100,7 +100,7 @@
               <c:if test="${loginID!=null && loginID !='admin' || loginCno!=null}">
                   <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="qinsertf">글쓰기</a></li>
               </c:if>
-              <c:if test="${Apple2 ==null && loginID == 'admin'}">
+              <c:if test="${Apple2 == null && loginID == 'admin'}">
                   <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="qreplyf?bqno=${Apple.bqno}&id=${loginID}&root=${Apple.root}&indent=${Apple.indent}&step=${Apple.step}&bqpw=${Apple.bqpw}&bqcontent=${Apple.bqcontent}">답글등록</a></li>
               </c:if>
               <c:if test="${loginID==null}">  
@@ -136,25 +136,26 @@
             <!-- comments--> 
          <c:if test="${loginID!=null}">
            <div class="mt-5">
-            <c:if test="${Apple2!=null}">
-             <h6 class="text-uppercase text-muted mb-4">comments</h6>
-             <!-- comment-->
-               <div class="media-body">
-                 <h5>답글</h5> <div align="left"><c:if test="${loginID=='admin'}"><a href="qdelete?bqno=${Apple2.bqno}">[글삭제]</a></c:if></div>
-                 <p class="text-uppercase text-sm text-muted"><i class="far fa-clock"></i> ${Apple2.bqdate}</p>
-                 <p class="text-muted">${Apple2.bqcontent}</p>
-               </div>
-            </c:if> 
-               <div class="col-xl-8 col-lg-10 mx-auto" align="center">
+             <c:if test="${Apple2!=null}">
+              <h6 class="text-uppercase text-muted mb-4">comments</h6>
+              <!-- comment-->
+                <div class="media-body">
+                  <h5>답글</h5> <div align="left"><c:if test="${loginID=='admin'}"><a href="qdelete?bqno=${Apple2.bqno}">[글삭제]</a></c:if></div>
+                  <p class="text-uppercase text-sm text-muted"><i class="far fa-clock"></i> ${Apple2.bqdate}</p>
+                  <p class="text-muted">${Apple2.bqcontent}</p>
+                </div>
+             </c:if> 
+             <div class="col-xl-8 col-lg-10 mx-auto" align="center">
                    <c:if test="${loginID==Apple.id || loginID=='admin'}">
                       <a href="qdelete?bqno=${Apple.bqno}">글삭제</a>&nbsp;
                    </c:if>
-               </div>
-            </c:if>
-           </div>            
-            </div> 
-          </div>
-        </div>
+             </div>
+           </div>
+         </c:if>
+          </div>  
+        </div>            
+      </div> 
+
     </section>
     <!-- Footer-->
     <footer class="position-relative z-index-10 d-print-none">

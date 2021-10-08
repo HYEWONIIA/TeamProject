@@ -4,6 +4,7 @@ import java.util.List;
 
 import criTest.Criteria;
 import criTest.SearchCriteria;
+import vo.QnaVO;
 import vo.ReviewVO;
 
 public interface ReviewService {
@@ -23,6 +24,7 @@ public interface ReviewService {
 	
 	List<ReviewVO> selectList(); //selectList
 	ReviewVO selectOne(ReviewVO vo); //selectList
+	ReviewVO selectReply(ReviewVO vo); //selectReply
 	
 	int countUp(ReviewVO vo); //countUp
 
