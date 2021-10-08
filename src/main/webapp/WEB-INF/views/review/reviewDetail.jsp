@@ -125,11 +125,13 @@
         <div class="row">
           <div class="col-xl-8 col-lg-10 mx-auto">           
             <p class="py-3 mb-5 text-muted text-center font-weight-light"> 작성자 <a class="font-weight-bold" href="#">${Apple.id}</a><span class="mx-1">|</span> 작성일 <a class="font-weight-bold" href="#">${Apple.brdate}</a> <span class="mx-1">|</span> 조회수 <a class="text-muted" href="#"> ${Apple.brcnt} </a></p> 
-            <p class="lead mb-5 black" align="center"><strong>${Apple.brtitle}</strong></p>
+            <p class="lead mb-5 black text-uppercase text-muted mb-4" align="center"><strong>${Apple.brtitle}</strong></p>
           </div>
+          <c:if test="${Apple.step!=1}">
           <div class="col-xl-8 col-lg-10 mx-auto">
             <p class="py-3 mb-5 text-muted text-center font-weight-light"> 도시 <a class="font-weight-bold" href="#">${Apple.brcity}</a></p>           
           </div>
+          </c:if>
         </div>
         <div class="row">
         </div>

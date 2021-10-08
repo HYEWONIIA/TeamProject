@@ -28,33 +28,17 @@ public class ReviewController {
 	
 	@Autowired
 	ReviewService service;
-	CompanyService service2;
-	
-	/*
-	 * // ** Ajax BoardList
-	 * 
-	 * @RequestMapping(value = "/arcplist") public ModelAndView rcplist(ModelAndView
-	 * mv) { List<ReviewVO> list = service.selectList(); if (list != null) {
-	 * mv.addObject("Banana", list); }else { mv.addObject("message",
-	 * "~~ 출력할 자료가 1건도 없습니다. ~~"); } mv.setViewName("review/rCriList"); return mv; }
-	 * //arlist
-	 */	
 	
 	// ** Review CriPageList
 	@RequestMapping(value = "/rlist")
 	
-	public ModelAndView rlist(ModelAndView mv, SearchCriteria cri, PageMaker pageMaker, CompanyVO cvo) {
+	public ModelAndView rlist(ModelAndView mv, SearchCriteria cri, CompanyVO cvo, PageMaker pageMaker) {
 
-		mv.addObject("cno"+cvo.getCno());
-		mv.addObject("cname"+cvo.getCname());
-		
 		cri.setSnoEno();
 			
 		// 2) 서비스 처리
-		List<ReviewVO> list = service.searchList(cri);
-		System.out.println("List => "+list.get(1));		
-		mv.addObject("Banana",list);
-
+		mv.addObject("Banana",service.searchList(cri));
+			
 		// 3) PageMaker 처리
 		pageMaker.setCri(cri);
 		pageMaker.setTotalRowCount(service.searchRowsCount(cri));
@@ -63,7 +47,7 @@ public class ReviewController {
 		mv.addObject("pageMaker",pageMaker);
 		mv.setViewName("review/reviewList");
 		return mv;
-	} //rlist 
+	} //rlist
 	
 	// ** 새글등록
 	@RequestMapping(value = "/rinsertf")
@@ -146,12 +130,11 @@ public class ReviewController {
 			if (vo != null) {
 				request.setAttribute("Apple", vo);
 				if(loginID != null) {
-					
 					vo.setRoot(vo.getBrno());
 					vo = service.selectReply(vo); // 항상 답글 확인
-					if(vo!=null)
+					if (vo != null)
 					request.setAttribute("Apple2", vo);
-					cvo.setCno(vo.getId());
+					//cvo.setCno(vo.getId());
 					//service2.selectOne(cvo);
 					mv.setViewName("review/reviewDetail"); 
 				}

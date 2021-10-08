@@ -95,7 +95,7 @@
 	</select>
 	
 	<select id="selectReply" resultType="vo.ReviewVO">
-		select * from review r where brno != #{root} and root = #{root}
+		select * from review where brno != #{root} and root = #{root}
 	</select>	
 	
 <!-- 원글 입력 

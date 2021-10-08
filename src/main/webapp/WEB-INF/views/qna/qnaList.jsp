@@ -190,7 +190,7 @@ margin:10px;
 		                    <c:if test="${loginID!=null || loginCno!=null}">
 			                  <a class="a"  href="qdetail?bqno=${list.root}&id=${list.id}">${list.bqtitle}</a>
 		                    </c:if>
-		                    <c:if test="${loginID==null}">
+		                    <c:if test="${loginID==null && loginCno==null}">
 			                  ${list.bqtitle}
 		                    </c:if>
 	                        </td>

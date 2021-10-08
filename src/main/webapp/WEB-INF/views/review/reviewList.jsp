@@ -147,9 +147,9 @@ margin:10px;
 	         		<li class="nav-item"><a class="nav-link" href="loginf_total">로그인</a></li>
 	        		<li class="nav-item"><a class="nav-link" href="joinf_total">회원가입</a></li>
 	         </c:if>
-              <c:if test="${loginID!=null && loginID!='admin'}">
+<%--               <c:if test="${loginID!=null && loginID!='admin'}">
                   <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="rinsertf">글쓰기</a></li>
-              </c:if>
+              </c:if> --%>
               <c:if test="${loginID==null || loginID!='admin' && loginCno!=null}">  
                   <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"></li>
               </c:if>          

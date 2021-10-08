@@ -7,6 +7,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Directory Theme by Bootstrapious</title>
+    <link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
+    <script src="resources/myLib/jquery-3.2.1.min.js"></script>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -195,7 +197,7 @@
                 <div class="form-group">
                   <img src="" class="select_img"><br>
   	              <input type="file" name="uploadfilef" id="uploadfilef">
-  	              <script>
+  	               <script>
 			         $('#uploadfile').change(function(){
 				         if(this.files && this.files[0]) {
 					         var reader = new FileReader;
@@ -206,7 +208,7 @@
 		 				         reader.readAsDataURL(this.files[0]);
 		 		          } // if
 			          }); // change	
-  		          </script>  
+  		           </script>  
                 </div>
                 <div class="form-group">
                   <%@ include file="star.html" %>
@@ -215,10 +217,11 @@
                 <input class="btn btn-outline-primary" type="submit" value="전송">
                 <input class="btn btn-outline-primary" type="reset" value="취소">
               </div>
-           </form>
-          </div>
+           </div>              
         </div>
+     </form>
       </div>
+
     </section>
     <!-- Footer-->
     <footer class="position-relative z-index-10 d-print-none">
